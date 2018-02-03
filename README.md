@@ -142,7 +142,7 @@ grid.arrange(p1,p2,p3, ncol=1)
      - `sum(..count..)` will sum across color, so the proportions displayed are based on total users. 
      - `y = ..density...` will plot these proportions within each group
 
-With `facet_wrap(~gender)`, Check the each count.
+With `facet_wrap(~gender)`, Check the each friend_count.
 ```
 ggplot(aes(x = friend_count), data = subset(pf, !is.na(gender))) + geom_histogram(aes(color = gender), binwidth = 10) + scale_x_continuous(limits = c(0, 1000), breaks = seq(0, 1000, 50)) + facet_wrap(~gender)
 
