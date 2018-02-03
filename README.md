@@ -32,8 +32,8 @@ pf <- read.csv('C:/Users/Minkun/Desktop/classes_1/NanoDeg/1.Data_AN/L7/---New R/
 
 >Phase_01. Understand the audience
  - Histogram of Users' Birthdays by day
-   - x-axis is the 'date of birth'
-   - Adjust x-axis' bins, using 'scale' layers!...JUST marking ticks, using "1 to 31"
+   - 'date of birth' on x-axis
+   - Adjust x-axis' bins, using 'scale' layers - `+ scale_x_continuous(breaks)`...JUST marking ticks - ("1 to 31")
 ```
 ggplot(aes(x = dob_day), data = pf) + geom_histogram(binwidth = 1) + scale_x_continuous(breaks = 1:31)
 ```
@@ -46,7 +46,15 @@ ggplot(data = pf, aes(x = dob_day)) + geom_histogram(binwidth = 1) + scale_x_con
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35760701-e1ce5ce6-0879-11e8-808a-e6f293bc4f09.jpg" width="600" height="160" />
 
+ - Histogram of friend size
+   - 'friends_count' on x-axis
+   - Outliers? then 'Limiting axis': `+ scale_x_continuous(limits = c(n, n))`
+```
+ggplot(aes(x=friend_count), data=pf) + geom_histogram() 
 
+ggplot(aes(x=friend_count), data=pf) + geom_histogram() + scale_x_continuous(limits = c(0,1000))
+```
+<img src="https://user-images.githubusercontent.com/31917400/35767091-036ef834-08dd-11e8-8118-90bd0b471cbd.jpg" width="600" height="160" />
 
 
 
