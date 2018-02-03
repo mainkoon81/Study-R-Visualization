@@ -38,6 +38,8 @@ ggplot(aes(x = dob_day), data = pf) + geom_histogram(binwidth = 1) + scale_x_con
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35759700-3fd3e9f2-0873-11e8-93d7-ff5e74cbefc6.jpg" />
 
+<img src="https://user-images.githubusercontent.com/31917400/35760482-53fe09c6-0878-11e8-8214-8cf6d737cf57.jpg" width="300" height="160" />
+
 
 
 
