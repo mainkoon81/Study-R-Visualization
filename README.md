@@ -65,7 +65,7 @@ ggplot(aes(x = friend_count), data = pf) + geom_histogram(binwidth = 25) + scale
 
 ggplot(aes(x = friend_count), data = subset(pf, !is.na(gender))) + geom_histogram(binwidth = 25) + scale_x_continuous(limits = c(0, 1000), breaks = seq(0, 1000, 50)) + facet_wrap(~gender)
 ```
-<img src="https://user-images.githubusercontent.com/31917400/35767251-de308eee-08e0-11e8-96a9-09daf4006707.jpg" width="1000" height="160" />
+<img src="https://user-images.githubusercontent.com/31917400/35767303-de7caf80-08e1-11e8-9bdb-9f4b269e2486.jpg" width="700" height="200" />
 
 
 
