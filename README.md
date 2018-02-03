@@ -115,11 +115,14 @@ ggplot(aes(x = age), data = pf) +
    - If we need to use regression
      - Take 'normalization.'
 
-
+Create all three histograms on "one single plot."
 ```
 p1 <- ggplot(aes(x=friend_count), data=pf) + geom_histogram()
 p2 <- p1 + scale_x_log10()
 p3 <- p1 + scale_x_sqrt()
+
+install.packages('gridExtra')
+library(gridExtra)
 grid.arrange(p1,p2,p3, ncol=1)
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35769633-aa1b61b8-0905-11e8-8961-aac63a9b20d5.jpg" width="800" height="270" /> 
