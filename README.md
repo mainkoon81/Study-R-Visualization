@@ -53,8 +53,10 @@ ggplot(data = pf, aes(x = dob_day)) + geom_histogram(binwidth = 1) + scale_x_con
 ggplot(aes(x=friend_count), data=pf) + geom_histogram() 
 
 ggplot(aes(x=friend_count), data=pf) + geom_histogram() + scale_x_continuous(limits = c(0,1000))
+
+ggplot(aes(x = friend_count), data = pf) + geom_histogram(binwidth = 25) + scale_x_continuous(limits = c(0, 1000), breaks = seq(0, 1000, 50))
 ```
-<img src="https://user-images.githubusercontent.com/31917400/35767091-036ef834-08dd-11e8-8118-90bd0b471cbd.jpg" width="600" height="160" />
+<img src="https://user-images.githubusercontent.com/31917400/35767164-d029a0c6-08de-11e8-9814-07da198c3bc2.jpg" width="1200" height="160" />
 
 
 
