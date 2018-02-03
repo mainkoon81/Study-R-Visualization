@@ -135,25 +135,33 @@ grid.arrange(p1,p2,p3, ncol=1)
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35769867-c082c712-0909-11e8-964c-7b9d82821158.jpg" /> 
 
- - [6) Visualization tip- **Frequency Polygon**, Connecting all counts]
+ - [6) Visualization tip- **Frequency Polygon**, Connecting all counts and comparing each distribution]
    - The shape of the frequency polygon depends on how our bins are set up - the height of the lines are the same as the bars in individual histograms, but the lines are easier to make a comparison with since they are on **the same axis**: `+ geom_freqpoly(aes(color), binwidth)`
+   - See the **proportion**:  Which side has more friends on average?
+     - Change y-axis to see the proportions instead of raw counts
+     - `sum(..count..)` will sum across color, so the proportions displayed are based on total users. 
+     - `y = ..density...` will plot these proportions within each group
 
+With `facet_wrap(~gender)`, Check the each count.
 ```
-ggplot(aes(x = friend_count, y = ..count../sum(..count..)), data = subset(pf, !is.na(gender))) + 
-  geom_histogram(aes(color = gender), binwidth=10) +
-  scale_x_continuous(limits = c(0, 1000), breaks = seq(0, 1000, 50)) +
-  xlab('Friend Count') +
-  ylab('Proportion of users with that friend count')
+ggplot(aes(x = friend_count), data = subset(pf, !is.na(gender))) + geom_histogram(aes(color = gender), binwidth = 10) + scale_x_continuous(limits = c(0, 1000), breaks = seq(0, 1000, 50)) + facet_wrap(~gender)
 
+ggplot(aes(x = friend_count), data = subset(pf, !is.na(gender))) + geom_freqpoly(aes(color = gender), binwidth = 10) + scale_x_continuous(limits = c(0, 1000), breaks = seq(0, 1000, 50)) + facet_wrap(~gender)
+```
+<img src="https://user-images.githubusercontent.com/31917400/35770800-5f6396a8-091a-11e8-9c8f-be4443522f89.jpg" width="700" height="190" />
+
+But the plots above do not show which gender has more friends on avg. We need proportion ! 
+ - Change y-axis to show proportion: `ggplot(aes(x = variable, y = ..count../sum(..count..))` 
+ - Without `facet_wrap(~gender)`
+ - Adding xlab(), ylab()
+```
 ggplot(aes(x = friend_count, y = ..count../sum(..count..)), data = subset(pf, !is.na(gender))) +
   geom_freqpoly(aes(color = gender), binwidth=10) +
   scale_x_continuous(limits = c(0, 1000), breaks = seq(0, 1000, 50)) +
   xlab('Friend Count') +
   ylab('Proportion of users with that friend count')
 ```
-<img src="https://user-images.githubusercontent.com/31917400/35770113-4e185954-090d-11e8-98dd-2c953411e8d5.jpg" width="700" height="190" />
-
-
+<img src="https://user-images.githubusercontent.com/31917400/35770870-a88164cc-091b-11e8-8f25-ba37273f8647.jpg" width="300" height="190" />
 
 
 
