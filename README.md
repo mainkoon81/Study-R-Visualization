@@ -18,7 +18,6 @@ __Story:__ People's perception of their audience on FB matches up to the reality
 __Library:__ `ggplot2`
 
 __Data:__ 'pseudo_facebook.tsv' 
-<img src="https://user-images.githubusercontent.com/31917400/35759700-3fd3e9f2-0873-11e8-93d7-ff5e74cbefc6.jpg" />
 
 #### Adjust a font size?
  - with the font size set to 20 ?
