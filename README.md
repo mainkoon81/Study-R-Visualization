@@ -37,7 +37,7 @@ pf <- read.csv('C:/Users/Minkun/Desktop/classes_1/NanoDeg/1.Data_AN/L7/---New R/
 ```
 ggplot(aes(x = dob_day), data = pf) + geom_histogram(binwidth = 1) + scale_x_continuous(breaks = 1:31)
 ```
- - Facetting, Splitting the data over 'dob_month' variable: `+ facet_wrap( ~ variable, ncol)`
+ - Faceting, Splitting the data over 'dob_month' variable: `+ facet_wrap( ~ variable, ncol)`
 <img src="https://user-images.githubusercontent.com/31917400/35760868-2c798ad0-087b-11e8-91e5-08aad97e0341.jpg" width="300" height="160" /> 
 
 ```
@@ -48,7 +48,9 @@ ggplot(data = pf, aes(x = dob_day)) + geom_histogram(binwidth = 1) + scale_x_con
 
  - Histogram of friend size
    - 'friends_count' on x-axis
-   - Outliers? then 'Limiting axis': `+ scale_x_continuous(limits = c(n, n))`
+   - Outliers? then 'Limiting axis': `+ scale_x_continuous(limits = c(n, n), breaks)`
+   - Faceting by 'gender': `+ facet_wrap( ~ variable)` or '+ facet_grid(gender ~ .)' 
+   - then ommiting NA values..it sould be dealt within the 'data' level: `data=subset(pf, !is.na(gender))`
 ```
 ggplot(aes(x=friend_count), data=pf) + geom_histogram() 
 
@@ -58,6 +60,12 @@ ggplot(aes(x = friend_count), data = pf) + geom_histogram(binwidth = 25) + scale
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35767164-d029a0c6-08de-11e8-9814-07da198c3bc2.jpg" width="1200" height="160" />
 
+```
+ggplot(aes(x = friend_count), data = pf) + geom_histogram(binwidth = 25) + scale_x_continuous(limits = c(0, 1000), breaks = seq(0, 1000, 50)) + facet_wrap(~gender)
+
+ggplot(aes(x = friend_count), data = subset(pf, !is.na(gender))) + geom_histogram(binwidth = 25) + scale_x_continuous(limits = c(0, 1000), breaks = seq(0, 1000, 50)) + facet_wrap(~gender)
+```
+<img src="https://user-images.githubusercontent.com/31917400/35767251-de308eee-08e0-11e8-96a9-09daf4006707.jpg" width="1000" height="160" />
 
 
 
