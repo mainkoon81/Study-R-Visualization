@@ -91,14 +91,21 @@ summary(pf$tenure/365)
   
 ggplot(aes(x = tenure/365), data=subset(pf, !is.na(gender))) +
   geom_histogram(binwidth = 0.25, color = 'black', fill = '#F79420') + scale_x_continuous(breaks=seq(1,7,1), limits=c(0,7)) +
-  facet_wrap(~gender) +  xlab('Years using Facebook') + ylab('Number of users in sample')
+  facet_wrap(~gender) + xlab('Years using Facebook') + ylab('Number of users in sample')
 ```   
 <img src="https://user-images.githubusercontent.com/31917400/35768181-bd21d6e0-08ef-11e8-9db4-df4beb04bb47.jpg" width="600" height="170" />   
 
+ - Histogram of Users' **age**
+   - 'age' on x-axis
+   - In x-axis, the tick-marks ranged 0 to 113 (by 5), and..binwidth would be 1.
+```
+summary(pf$age) 
 
-
-
-
+ggplot(aes(x = age), data = pf) +
+  geom_histogram(binwidth = 1, color='black', fill = '#5760AB') + scale_x_continuous(breaks = seq(0, 113, 5)) + 
+  xlab('Ages using FB') + ylab('NO.users in sample')
+```
+<img src="https://user-images.githubusercontent.com/31917400/35768286-4383a3e8-08f1-11e8-9164-94dbea6dfa95.jpg" width="300" height="170" /> 
 
 
 
