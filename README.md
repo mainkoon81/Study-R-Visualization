@@ -108,8 +108,15 @@ ggplot(aes(x = age), data = pf) +
 <img src="https://user-images.githubusercontent.com/31917400/35768286-4383a3e8-08f1-11e8-9164-94dbea6dfa95.jpg" width="300" height="170" /> 
  
  - 5) Data Transformation
-   - 
+   - If we have 'Over-Dispersed' data (the term is always relative to some particular posited distribution..Poisson? Gamma?) 
+     - **too long tailed shape**: Some have 100 times the median value...some have an order of magnitude..
+     - **Shorten the tail**: to see SD, Orders of magnitude, the pattern more clearly, etc
+     - Take 'log' or 'sqrt' 
+   - If we need to use regression
+     - Take 'normalization.'
+   - Create all three histograms on one plot: `install.packages('gridExtra')`, `library(gridExtra)`
 
+<img src="https://user-images.githubusercontent.com/31917400/35769493-aaa36c40-0903-11e8-841b-8a4f84a50934.jpg" width="500" height="170" /> 
 
 
 
