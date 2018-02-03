@@ -37,10 +37,10 @@ pf <- read.csv('C:/Users/Minkun/Desktop/classes_1/NanoDeg/1.Data_AN/L7/---New R/
 ```
 ggplot(aes(x = dob_day), data = pf) + geom_histogram(binwidth = 1) + scale_x_continuous(breaks = 1:31)
 ```
- - Facetting, Splitting the data over 'months' `+ facet_wrap(~dob_month)`
+ - Facetting, Splitting the data over 'dob_month' variable: `+ facet_wrap( ~ variable, ncol)`
 ```
 ggplot(data = pf, aes(x = dob_day)) + geom_histogram(binwidth = 1) + scale_x_continuous(breaks = 1:31) +
-  facet_wrap(~dob_month)
+  facet_wrap(~dob_month, ncol = 4)
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35760701-e1ce5ce6-0879-11e8-808a-e6f293bc4f09.jpg" width="600" height="160" />
 
