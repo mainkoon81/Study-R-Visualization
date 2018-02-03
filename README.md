@@ -93,7 +93,7 @@ ggplot(aes(x = tenure/365), data=subset(pf, !is.na(gender))) +
   geom_histogram(binwidth = 0.25, color = 'black', fill = '#F79420') + scale_x_continuous(breaks=seq(1,7,1), limits=c(0,7)) +
   facet_wrap(~gender) + xlab('Years using Facebook') + ylab('Number of users in sample')
 ```   
-<img src="https://user-images.githubusercontent.com/31917400/35768181-bd21d6e0-08ef-11e8-9db4-df4beb04bb47.jpg" width="600" height="170" />   
+<img src="https://user-images.githubusercontent.com/31917400/35768532-0c5ef29c-08f5-11e8-944f-4e41967b2051.jpg" width="600" height="170" />   
 
  - 4) Histogram of Users' **age**
    - 'age' on x-axis
