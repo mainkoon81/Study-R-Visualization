@@ -113,7 +113,7 @@ ggplot(aes(x = age), data = pf) +
      - **Shorten the tail**: to see SD, Orders of magnitude, the pattern more clearly, etc
        - Take 'log' or 'sqrt' in the variable
        - Take 'log' or 'sqrt' in a scaling layer: `+ scale_x_log()`, `+ scale_x_sqrt()`
-         - what's the difference?: **x-axis labeling** 
+         - what's the difference?: **x-axis labeling**. A scaling layer method returns actual 'friend_count' on x-axis. 
    - If we need to use regression
      - Take 'normalization' ?
 
