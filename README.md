@@ -135,7 +135,7 @@ grid.arrange(p1,p2,p3, ncol=1)
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35769867-c082c712-0909-11e8-964c-7b9d82821158.jpg" /> 
 
- - [6) Visualization tip- **Frequency Polygon**, Connecting all counts and comparing each distribution]
+ - [6) Comparison I. **Frequency Polygon**, Connecting all counts and comparing each distribution]
    - The shape of the frequency polygon depends on how our bins are set up - the height of the lines are the same as the bars in individual histograms, but the lines are easier to make a comparison with since they are on **the same axis**: `+ geom_freqpoly(aes(color = categorical_variable), binwidth)`
    - See the **proportion**:  Which side has more friends on average?
      - Change y-axis to see the proportions instead of raw counts
@@ -165,6 +165,11 @@ ggplot(aes(x = friend_count, y = ..count../sum(..count..)), data = subset(pf, !i
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35770870-a88164cc-091b-11e8-8f25-ba37273f8647.jpg" width="300" height="190" />
 
+ - [7) Comparison II. **Boxplot** and  ]
+   - Check Normally distributing ?
+   - In the boxplot, y-axis is no longer row count, but it should be the variable normally distributed.
+   - 
+   
 
 
 
