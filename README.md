@@ -132,7 +132,7 @@ p3 <- p1 + scale_x_sqrt()
 
 grid.arrange(p1,p2,p3, ncol=1)
 ```
-<img src="https://user-images.githubusercontent.com/31917400/35769818-ee62712e-0908-11e8-8ce9-0f8db93750ec.jpg" /> 
+<img src="https://user-images.githubusercontent.com/31917400/35769867-c082c712-0909-11e8-964c-7b9d82821158.jpg" /> 
 
 
 
