@@ -6,16 +6,21 @@ __[R]__
  - III. Explore Multi-Variable
 
 ### I. One Variable
+http://hci.stanford.edu/publications/2013/invisibleaudience/invisibleaudience.pdf
+
 __Story:__ People's perception of their audience on FB matches up to the reality? 
  - Well, FB believes who you think is in your audience affects how you present yourself. 
  - Who's actually seeing the content they are sharing?  
    - __Survey Q1.__ "How many do you think saw the post? 
      - There is a big mismatch b/w people's perceived audience size and their actual audience size.
+     - People dramatically underestimate the size of their audience - (1/4). 
    
 __Library:__ `ggplot2`
+
 __Data:__ 'pseudo_facebook.tsv' 
 <img src="https://user-images.githubusercontent.com/31917400/35759700-3fd3e9f2-0873-11e8-93d7-ff5e74cbefc6.jpg" />
 
+>Phase_01. Understand the audience
  - Histogram of Users' Birthdays 
    - x-axis is the 'date of birth'
    - Adjust x-axis' bins, using 'scale' layers!...JUST marking ticks, using "1 to 31"
