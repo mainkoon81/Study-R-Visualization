@@ -34,6 +34,7 @@ pf <- read.csv('C:/Users/Minkun/Desktop/classes_1/NanoDeg/1.Data_AN/L7/---New R/
  - Histogram of Users' **Birthdays**
    - 'date of birth' on x-axis
    - Adjust x-axis' bins, using 'scale' layers - `+ scale_x_continuous(breaks)`...JUST marking ticks - ("1 to 31")
+   - 'binwidth argument' in the 'geom_histogram' layer is actually change bin size while 'breaks argument' in the 'scale' layer just change the tick marks!
 ```
 ggplot(aes(x = dob_day), data = pf) + geom_histogram(binwidth = 1) + scale_x_continuous(breaks = 1:31)
 ```
@@ -53,7 +54,7 @@ ggplot(data = pf, aes(x = dob_day)) + geom_histogram(binwidth = 1) + scale_x_con
    - then ommiting NA values..it sould be dealt within the 'data' level: `data=subset(pf, !is.na(gender))`
    - IF the relationship include categorical variable (such as 'gender'), 
      - STATISTICS - which side has more friend on average?
-     - To find average friend count by gender, we need `by(target variable, categorical variable, function)`
+     - To find average 'friend_count_by_gender', we use `by(target variable, categorical variable, function)`
      
 ```
 ggplot(aes(x=friend_count), data=pf) + geom_histogram() 
@@ -77,7 +78,19 @@ by(pf$friend_count, pf$gender, summary)
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35767397-73a5e5bc-08e3-11e8-800c-4b8a94318713.jpg" width="600" height="80" />
 
-
+ - Histogram of Users **tenure by year** - how many days they've used facebook so far?
+   - 'tenure/365' on x-axis
+   - Determines the color of the outline, area_inside in a plot - `+ geom_histogram(binwidth, color, fill)`
+   - How about gender difference? - `+ facet_wrap(~gender)`
+```
+ggplot(aes(x = tenure), data = pf) +
+  geom_histogram(binwidth = 30, color = 'black', fill = '#099DD9')
+  
+ggplot(aes(x = tenure/365), data=subset(pf, !is.na(gender))) +
+  geom_histogram(binwidth = 0.25, color = 'black', fill = '#F79420') + scale_x_continuous(breaks=seq(1,7,1), limits=c(0,7)) +
+  facet_wrap(~gender) +  xlab('Number of years using Facebook') + ylab('Number of users in sample')
+```   
+<img src="https://user-images.githubusercontent.com/31917400/35768009-bc496a96-08ed-11e8-8982-6e2c6598ae49.jpg" width="600" height="170" />   
 
 
 
