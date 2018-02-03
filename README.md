@@ -111,8 +111,8 @@ ggplot(aes(x = age), data = pf) +
    - If we have 'Over-Dispersed' data (the term is always relative to some particular posited distribution..Poisson? Gamma?) 
      - **too long tailed shape**: Some have 100 times the median value...some have an order of magnitude..
      - **Shorten the tail**: to see SD, Orders of magnitude, the pattern more clearly, etc
-     - Take 'log' or 'sqrt' in the variable
-     - Take 'log' or 'sqrt' in a scaling layer: `+ scale_x_log()`, `+ scale_x_sqrt()`
+       - Take 'log' or 'sqrt' in the variable
+       - Take 'log' or 'sqrt' in a scaling layer: `+ scale_x_log()`, `+ scale_x_sqrt()`
    - If we need to use regression
      - Take 'normalization' ?
 
