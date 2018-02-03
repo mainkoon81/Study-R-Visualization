@@ -31,7 +31,7 @@ pf <- read.csv('C:/Users/Minkun/Desktop/classes_1/NanoDeg/1.Data_AN/L7/---New R/
 <img src="https://user-images.githubusercontent.com/31917400/35759700-3fd3e9f2-0873-11e8-93d7-ff5e74cbefc6.jpg" />
 
 >Phase_01. Understand the audience
- - Histogram of Users' Birthdays by day
+ - Histogram of Users' **Birthdays**
    - 'date of birth' on x-axis
    - Adjust x-axis' bins, using 'scale' layers - `+ scale_x_continuous(breaks)`...JUST marking ticks - ("1 to 31")
 ```
@@ -46,11 +46,15 @@ ggplot(data = pf, aes(x = dob_day)) + geom_histogram(binwidth = 1) + scale_x_con
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35760701-e1ce5ce6-0879-11e8-808a-e6f293bc4f09.jpg" width="600" height="160" />
 
- - Histogram of friend size
+ - Histogram of Users' **friend size**
    - 'friends_count' on x-axis
    - Outliers? then 'Limiting axis': `+ scale_x_continuous(limits = c(n, n), breaks)`
    - Faceting by 'gender': `+ facet_wrap( ~ variable)` or '+ facet_grid(gender ~ .)' 
    - then ommiting NA values..it sould be dealt within the 'data' level: `data=subset(pf, !is.na(gender))`
+   - IF the relationship include categorical variable (such as 'gender'), 
+     - STATISTICS - which side has more friend on average?
+     - To find average friend count by gender, we need `by(target variable, categorical variable, function)`
+     
 ```
 ggplot(aes(x=friend_count), data=pf) + geom_histogram() 
 
@@ -67,7 +71,11 @@ ggplot(aes(x = friend_count), data = subset(pf, !is.na(gender))) + geom_histogra
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35767303-de7caf80-08e1-11e8-9bdb-9f4b269e2486.jpg" width="700" height="200" />
 
-
+```
+table(pf$gender) 
+by(pf$friend_count, pf$gender, summary)
+```
+<img src="https://user-images.githubusercontent.com/31917400/35767397-73a5e5bc-08e3-11e8-800c-4b8a94318713.jpg" width="600" height="80" />
 
 
 
