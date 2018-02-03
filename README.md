@@ -115,7 +115,6 @@ ggplot(aes(x = age), data = pf) +
    - If we need to use regression
      - Take 'normalization.'
 
-<img src="https://user-images.githubusercontent.com/31917400/35769493-aaa36c40-0903-11e8-841b-8a4f84a50934.jpg" width="500" height="170" /> 
 
 ```
 p1 <- ggplot(aes(x=friend_count), data=pf) + geom_histogram()
