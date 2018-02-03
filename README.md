@@ -78,7 +78,7 @@ by(pf$friend_count, pf$gender, summary)
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35767397-73a5e5bc-08e3-11e8-800c-4b8a94318713.jpg" width="600" height="80" />
 
- - [3) Histogram of Users **tenure by year** - how many days they've used facebook so far?]
+ - [3) Histogram of Users' **tenure by year** - how many days they've used facebook so far?]
    - 'tenure/365' on x-axis
    - Determines the color of the outline, area_inside in a plot: `+ geom_histogram(binwidth, color, fill)`
    - How to set up bins? Using `summary`, find mix&max. In x-axis, the tick-marks ranged 0 to 9 (by 1), and the plot limit is 0 to 7..binwidth be 0.25 
@@ -107,25 +107,33 @@ ggplot(aes(x = age), data = pf) +
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35768286-4383a3e8-08f1-11e8-9164-94dbea6dfa95.jpg" width="300" height="170" /> 
  
- - [5) Data Transformation]
+ - [5) Data Transformation of Users' **friend size**]
    - If we have 'Over-Dispersed' data (the term is always relative to some particular posited distribution..Poisson? Gamma?) 
      - **too long tailed shape**: Some have 100 times the median value...some have an order of magnitude..
      - **Shorten the tail**: to see SD, Orders of magnitude, the pattern more clearly, etc
-     - Take 'log' or 'sqrt' in a scale layer: `+ scale_x_log()`, `+ scale_x_sqrt()`
+     - Take 'log' or 'sqrt' in the variable
+     - Take 'log' or 'sqrt' in a scaling layer: `+ scale_x_log()`, `+ scale_x_sqrt()`
    - If we need to use regression
      - Take 'normalization' ?
 
 Create all three histograms on "one single plot."
 ```
 p1 <- ggplot(aes(x=friend_count), data=pf) + geom_histogram()
-p2 <- p1 + scale_x_log10()
-p3 <- p1 + scale_x_sqrt()
+p2 <- ggplot(aes(x=log(friend_count + 1)), data=pf) + geom_histogram()
+p3 <- ggplot(aes(x=sqrt(friend_count)), data=pf) + geom_histogram()
 
 install.packages('gridExtra')
 library(gridExtra)
 grid.arrange(p1,p2,p3, ncol=1)
+
+p1 <- ggplot(aes(x=friend_count), data=pf) + geom_histogram()
+p2 <- p1 + scale_x_log10()
+p3 <- p1 + scale_x_sqrt()
+
+grid.arrange(p1,p2,p3, ncol=1)
 ```
-<img src="https://user-images.githubusercontent.com/31917400/35769633-aa1b61b8-0905-11e8-8961-aac63a9b20d5.jpg" width="800" height="270" /> 
+<img src="https://user-images.githubusercontent.com/31917400/35769818-ee62712e-0908-11e8-8ce9-0f8db93750ec.jpg" /> 
+
 
 
 
