@@ -113,6 +113,7 @@ ggplot(aes(x = age), data = pf) +
      - **Shorten the tail**: to see SD, Orders of magnitude, the pattern more clearly, etc
        - Take 'log' or 'sqrt' in the variable
        - Take 'log' or 'sqrt' in a scaling layer: `+ scale_x_log()`, `+ scale_x_sqrt()`
+         - what's the difference?: **x-axis labeling** 
    - If we need to use regression
      - Take 'normalization' ?
 
@@ -127,7 +128,7 @@ library(gridExtra)
 grid.arrange(p1,p2,p3, ncol=1)
 
 p1 <- ggplot(aes(x=friend_count), data=pf) + geom_histogram()
-p2 <- p1 + scale_x_log10()
+p2 <- p1 + scale_x_log()
 p3 <- p1 + scale_x_sqrt()
 
 grid.arrange(p1,p2,p3, ncol=1)
