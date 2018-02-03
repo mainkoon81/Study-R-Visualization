@@ -31,7 +31,7 @@ pf <- read.csv('C:/Users/Minkun/Desktop/classes_1/NanoDeg/1.Data_AN/L7/---New R/
 <img src="https://user-images.githubusercontent.com/31917400/35759700-3fd3e9f2-0873-11e8-93d7-ff5e74cbefc6.jpg" />
 
 >Phase_01. Understand the audience
- - 1) Histogram of Users' **Birthdays**
+ - [1) Histogram of Users' **Birthdays**]
    - 'date of birth' on x-axis
    - Adjust x-axis' bins, using 'scale' layers - `+ scale_x_continuous(breaks)`...JUST marking ticks - ("1 to 31")
    - 'binwidth argument' in the 'geom_histogram' layer is actually change bin size while 'breaks argument' in the 'scale' layer just change the tick marks!
@@ -47,7 +47,7 @@ ggplot(data = pf, aes(x = dob_day)) + geom_histogram(binwidth = 1) + scale_x_con
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35760701-e1ce5ce6-0879-11e8-808a-e6f293bc4f09.jpg" width="600" height="160" />
 
- - 2) Histogram of Users' **friend size**
+ - [2) Histogram of Users' **friend size**]
    - 'friends_count' on x-axis
    - Outliers? then 'Limiting axis': `+ scale_x_continuous(limits = c(n, n), breaks)`
    - Faceting by 'gender': `+ facet_wrap( ~ variable)` or '+ facet_grid(gender ~ .)' 
@@ -78,7 +78,7 @@ by(pf$friend_count, pf$gender, summary)
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35767397-73a5e5bc-08e3-11e8-800c-4b8a94318713.jpg" width="600" height="80" />
 
- - 3) Histogram of Users **tenure by year** - how many days they've used facebook so far?
+ - [3) Histogram of Users **tenure by year** - how many days they've used facebook so far?]
    - 'tenure/365' on x-axis
    - Determines the color of the outline, area_inside in a plot: `+ geom_histogram(binwidth, color, fill)`
    - How to set up bins? Using `summary`, find mix&max. In x-axis, the tick-marks ranged 0 to 9 (by 1), and the plot limit is 0 to 7..binwidth be 0.25 
@@ -95,7 +95,7 @@ ggplot(aes(x = tenure/365), data=subset(pf, !is.na(gender))) +
 ```   
 <img src="https://user-images.githubusercontent.com/31917400/35768532-0c5ef29c-08f5-11e8-944f-4e41967b2051.jpg" width="600" height="170" />   
 
- - 4) Histogram of Users' **age**
+ - [4) Histogram of Users' **age**]
    - 'age' on x-axis
    - In x-axis, the tick-marks ranged 0 to 113 (by 5), and..binwidth would be 1.
 ```
@@ -107,16 +107,24 @@ ggplot(aes(x = age), data = pf) +
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35768286-4383a3e8-08f1-11e8-9164-94dbea6dfa95.jpg" width="300" height="170" /> 
  
- - 5) Data Transformation
+ - [5) Data Transformation]
    - If we have 'Over-Dispersed' data (the term is always relative to some particular posited distribution..Poisson? Gamma?) 
      - **too long tailed shape**: Some have 100 times the median value...some have an order of magnitude..
      - **Shorten the tail**: to see SD, Orders of magnitude, the pattern more clearly, etc
      - Take 'log' or 'sqrt' 
    - If we need to use regression
      - Take 'normalization.'
-   - Create all three histograms on one plot: `install.packages('gridExtra')`, `library(gridExtra)`
 
 <img src="https://user-images.githubusercontent.com/31917400/35769493-aaa36c40-0903-11e8-841b-8a4f84a50934.jpg" width="500" height="170" /> 
+
+```
+p1 <- ggplot(aes(x=friend_count), data=pf) + geom_histogram()
+p2 <- p1 + scale_x_log10()
+p3 <- p1 + scale_x_sqrt()
+grid.arrange(p1,p2,p3, ncol=1)
+```
+<img src="https://user-images.githubusercontent.com/31917400/35769633-aa1b61b8-0905-11e8-8961-aac63a9b20d5.jpg" width="800" height="270" /> 
+
 
 
 
