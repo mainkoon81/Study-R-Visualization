@@ -7,10 +7,10 @@ __[R]__
 
 ### I. One Variable
 __Story:__ People's perception of their audience on FB matches up to the reality? 
- - Well, who you think is in your audience, affects how you present yourself. 
+ - Well, FB believes who you think is in your audience affects how you present yourself. 
  - Who's actually seeing the content they are sharing?  
- - Survey Q1. "How many do you think saw the post? 
-   - There is a big mismatch b/w people's perceived audience size and their actual audience size.
+   - __Survey Q1.__ "How many do you think saw the post? 
+     - There is a big mismatch b/w people's perceived audience size and their actual audience size.
    
 __Library:__ `ggplot2`
 __Data:__ 'pseudo_facebook.tsv' 
