@@ -80,8 +80,8 @@ by(pf$friend_count, pf$gender, summary)
 
  - Histogram of Users **tenure by year** - how many days they've used facebook so far?
    - 'tenure/365' on x-axis
-   - Determines the color of the outline, area_inside in a plot - `+ geom_histogram(binwidth, color, fill)`
-   - How about gender difference? - `+ facet_wrap(~gender)`
+   - Determines the color of the outline, area_inside in a plot: `+ geom_histogram(binwidth, color, fill)`
+   - How about gender difference?: `+ facet_wrap(~gender)`
 ```
 ggplot(aes(x = tenure), data = pf) +
   geom_histogram(binwidth = 30, color = 'black', fill = '#099DD9')
@@ -91,6 +91,7 @@ ggplot(aes(x = tenure/365), data=subset(pf, !is.na(gender))) +
   facet_wrap(~gender) +  xlab('Number of years using Facebook') + ylab('Number of users in sample')
 ```   
 <img src="https://user-images.githubusercontent.com/31917400/35768009-bc496a96-08ed-11e8-8982-6e2c6598ae49.jpg" width="600" height="170" />   
+
 
 
 
