@@ -190,6 +190,8 @@ by(pf$friend_count, pf$gender, summary)
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35804020-e14a897a-0a6d-11e8-98cc-dcc327622762.jpg" />
 
+> Useful Tips:
+ - 
 
 
 
@@ -201,8 +203,9 @@ by(pf$friend_count, pf$gender, summary)
 
 
 
+### II. Two Variable
 
-
+__Story:__ 
 
 
 
