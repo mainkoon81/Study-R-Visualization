@@ -219,12 +219,21 @@ sum(pf$mobile_check_in==1)/length(pf$mobile_check_in)
 
 ### II. Two Variable
 
-__Story:__ 
-
-
-
-
-
+>Phase_02. Tackle the issue - plotting 'actual_audience_size'(x) vs 'perceived_audience_size'(y)
+ - The 45 degree diagonal line would be the perfect accuracy line.
+ - Usually it's best to use a scatter plot to examine the relationship b/w two continuous variables. 
+ 
+ - [1) Scatter of 'friend_count' vs **age**]
+   - `+ geom_point(alpha=1/20)`
+   - `+ xlim(n, n)`
+   - Note: OverPlotting - Some of these pt are **spread out from one another(verically)** while others are stacked right on top of each other. Some are overplotted. We can't see how many pt are in each region. so we set the transparency of pt using alpha-parameter in 'geom-layer'.
+```
+summary(pf$age)
+ggplot(aex(x=age, y=friend_count), data = pf) + geom_point() + xlim(13, 90)
+ggplot(aes(x=age, y=friend_count), data = pf) + geom_point(alpha=1/20) + xlim(13, 90)
+ggplot(aes(x=age, y=friend_count), data = pf) + geom_jitter(alpha=1/20) + xlim(13, 90)
+```
+<img src="https://user-images.githubusercontent.com/31917400/35807437-b58fdf26-0a7a-11e8-8a0a-fd59cfd427fd.jpg" width="600" height="40" />
 
 
 
