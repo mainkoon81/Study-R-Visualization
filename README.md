@@ -193,7 +193,7 @@ by(pf$friend_count, pf$gender, summary)
 
 > Useful Tips: To get a better look at the data 
  - What if the variable holds too many '0'sss ? 'mobile_likes' shows how often each user is giving 'likes' via their mobile phones. 
-<img src="https://user-images.githubusercontent.com/31917400/35807123-b8f627b6-0a79-11e8-8c2a-dcf375c87c74.jpg" width="600" height="50" />
+<img src="https://user-images.githubusercontent.com/31917400/35808590-31a105b0-0a7e-11e8-89fc-492a6350bc05.jpg" width="600" height="50" />
 
  - We want to simplify it. check_in or not...
  - Then **we create a factor!** First, let's create a new variable('mobile_check_in')that we funnel NA to..
