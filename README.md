@@ -108,6 +108,7 @@ ggplot(aes(x = age), data = pf) +
 <img src="https://user-images.githubusercontent.com/31917400/35768286-4383a3e8-08f1-11e8-9164-94dbea6dfa95.jpg" width="300" height="170" /> 
  
  - [5) Data Transformation of Users' **friend size**]
+   - To get a better look at the data... 
    - If we have 'Over-Dispersed' data (the term is always relative to some particular posited distribution..Poisson? Gamma?) 
      - **too long tailed shape**: Some have 100 times the median value...some have an order of magnitude..
      - **Shorten the tail**: to see SD, Orders of magnitude, the pattern more clearly, etc
@@ -190,18 +191,29 @@ by(pf$friend_count, pf$gender, summary)
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35804020-e14a897a-0a6d-11e8-98cc-dcc327622762.jpg" />
 
-> Useful Tips:
- - 
+> Useful Tips: To get a better look at the data 
+ - What if the variable holds too many '0'sss ? 'mobile_likes' shows how often each user is giving 'likes' via their mobile phones. 
+<img src="https://user-images.githubusercontent.com/31917400/35807123-b8f627b6-0a79-11e8-8c2a-dcf375c87c74.jpg" width="600" height="50" />
 
+ - We want to simplify it. check_in or not...
+ - Then **we create a factor!** First, let's create a new variable('mobile_check_in')that we funnel NA to..
+ - `ifelse(cond, 1, 0)` if the cond is true, assign 1, otherwise assign 0, and convert it to a factor variable.
+```
+pf$mobile_check_in <- NA  
+pf$mobile_check_in <- ifelse(pf$mobile_likes>0, 1, 0) 
+pf$mobile_check_in <- factor(pf$mobile_check_in)
 
+summary(pf$mobile_check_in)
+```
+<img src="https://user-images.githubusercontent.com/31917400/35807437-b58fdf26-0a7a-11e8-8a0a-fd59cfd427fd.jpg" width="600" height="40" />
 
-
-
-
-
-
-
-
+ - What percent of users check_in, using mobile? 
+   - The `sum()` will not work since mobile_check_in is a **factor variable**. 
+   - Use the `length()` to determine the number of values in a vector.
+```
+sum(pf$mobile_check_in==1)/length(pf$mobile_check_in)
+```
+[1] 0.6459097
 
 ### II. Two Variable
 
