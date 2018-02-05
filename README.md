@@ -166,10 +166,58 @@ ggplot(aes(x = friend_count, y = ..count../sum(..count..)), data = subset(pf, !i
 <img src="https://user-images.githubusercontent.com/31917400/35770870-a88164cc-091b-11e8-8f25-ba37273f8647.jpg" width="300" height="190" />
 
  - [7) Comparison II. **Boxplot** and  ]
-   - Check Normally distributing ?
-   - In the boxplot, y-axis is no longer row count, but it should be the variable normally distributed.
-   - 
-   
+   - Check if Normally distributed ?
+   - In the boxplot, y-axis is no longer row count, but it should be the variable normally distributed. So we pass in the categorical to x, and the numerical to y.
+   - 1)So many outliers, then focus on the box only(limiting 'friend_counts'(y-axis) between 0 and 1000) 
+   - 2)But they remove our data from calculation and our boxes were affected, then go with the **"coord_cartesian layer"**!
+   - 3)Let's try boxes only..
+<img src="https://user-images.githubusercontent.com/31917400/35803594-3d23e450-0a6c-11e8-95c4-b23757f52055.jpg" width="400" height="70" />
+
+```
+ggplot(aes(x=gender, y=friend_count), data = subset(pf, !is.na(gender))) + geom_boxplot() 
+>>>[...] + scale_y_continuous(limits = c(1,1000))
+>>>[...] + coord_cartesian(ylim = c(1,1000))
+
+by(pf$friend_count, pf$gender, summary) 
+>>>[...] + coord_cartesian(ylim = c(0,250))
+```
+<img src="https://user-images.githubusercontent.com/31917400/35803875-4fac223a-0a6d-11e8-8909-88713590e545.jpg" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
