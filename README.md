@@ -181,7 +181,7 @@ ggplot(aes(x=gender, y=friend_count), data = subset(pf, !is.na(gender))) + geom_
 by(pf$friend_count, pf$gender, summary) 
 >>>[...] + coord_cartesian(ylim = c(0,250))
 ```
-<img src="https://user-images.githubusercontent.com/31917400/35803875-4fac223a-0a6d-11e8-8909-88713590e545.jpg" />
+<img src="https://user-images.githubusercontent.com/31917400/35804020-e14a897a-0a6d-11e8-98cc-dcc327622762.jpg" />
 
 
 
