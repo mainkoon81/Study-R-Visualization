@@ -177,7 +177,7 @@ ggplot(aes(x = friend_count, y = ..count../sum(..count..)), data = subset(pf, !i
    - 1)So many outliers, then focus on the box only(limiting 'friend_counts'(y-axis) between 0 and 1000) 
    - 2)But they remove our data from calculation and our boxes were affected, then go with the **"coord_cartesian layer"** instead of scale_layer !
    - 3)Let's try boxes only..
-<img src="https://user-images.githubusercontent.com/31917400/35804866-6ebf4a0e-0a71-11e8-9da7-17695dd26d62.jpg" width="700" height="300" />
+<img src="https://user-images.githubusercontent.com/31917400/35805199-c4becc8a-0a72-11e8-9978-4cb3468f7097.jpg" width="700" height="300" />
 
 ```
 ggplot(aes(x=gender, y=friend_count), data = subset(pf, !is.na(gender))) + 
