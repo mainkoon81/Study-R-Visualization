@@ -176,8 +176,8 @@ ggplot(aes(x = friend_count, y = ..count../sum(..count..)), data = subset(pf, !i
 ```
 ggplot(aes(x=gender, y=friend_count), data = subset(pf, !is.na(gender))) + geom_boxplot() 
 >>>[...] + scale_y_continuous(limits = c(1,1000))
->>>[...] + coord_cartesian(ylim = c(1,1000))
 
+>>>[...] + coord_cartesian(ylim = c(1,1000))
 by(pf$friend_count, pf$gender, summary) 
 >>>[...] + coord_cartesian(ylim = c(0,250))
 ```
