@@ -233,7 +233,7 @@ ggplot(aex(x=age, y=friend_count), data = pf) + geom_point() + xlim(13, 90)
 ggplot(aes(x=age, y=friend_count), data = pf) + geom_point(alpha=1/20) + xlim(13, 90)
 ggplot(aes(x=age, y=friend_count), data = pf) + geom_jitter(alpha=1/20) + xlim(13, 90)
 ```
-<img src="https://user-images.githubusercontent.com/31917400/35819924-0fb29f7c-0a9c-11e8-840a-efd1e9b1a0e6.jpg" width="600" height="40" />
+<img src="https://user-images.githubusercontent.com/31917400/35819924-0fb29f7c-0a9c-11e8-840a-efd1e9b1a0e6.jpg" />
 
 
 
