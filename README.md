@@ -136,24 +136,30 @@ grid.arrange(p1,p2,p3, ncol=1)
 <img src="https://user-images.githubusercontent.com/31917400/35769867-c082c712-0909-11e8-964c-7b9d82821158.jpg" /> 
 
  - [6) Comparison I. **Frequency Polygon**, Connecting all counts and comparing each distribution]
-   - The shape of the frequency polygon depends on how our bins are set up - the height of the lines are the same as the bars in individual histograms, but the lines are easier to make a comparison with since they are on **the same axis**: `+ geom_freqpoly(aes(color = categorical_variable), binwidth)`
-   - See the **proportion**:  Which side has more friends on average?
-     - Change y-axis to see the proportions instead of raw counts
-     - `sum(..count..)` will sum across color, so the proportions displayed are based on total users. 
-     - `y = ..density...` will plot these proportions within each group
+   - `+ geom_freqpoly(aes(color = categorical_variable), binwidth)`
+   - The shape of the frequency polygon depends on how our bins are set up - the height of the lines are the same as the bars in individual histograms, but the lines are easier to make a comparison with since they are on the same axis. 
 
-With `facet_wrap(~gender)`, Check the each friend_count.
+With `facet_wrap(~gender)`, Check the each 'friend_count'.
 ```
-ggplot(aes(x = friend_count), data = subset(pf, !is.na(gender))) + geom_histogram(aes(color = gender), binwidth = 10) + scale_x_continuous(limits = c(0, 1000), breaks = seq(0, 1000, 50)) + facet_wrap(~gender)
+ggplot(aes(x = friend_count), data = subset(pf, !is.na(gender))) + 
+  geom_histogram(aes(color = gender), binwidth = 10) + 
+  scale_x_continuous(limits = c(0, 1000), breaks = seq(0, 1000, 50)) + 
+  facet_wrap(~gender)
 
-ggplot(aes(x = friend_count), data = subset(pf, !is.na(gender))) + geom_freqpoly(aes(color = gender), binwidth = 10) + scale_x_continuous(limits = c(0, 1000), breaks = seq(0, 1000, 50)) + facet_wrap(~gender)
+ggplot(aes(x = friend_count), data = subset(pf, !is.na(gender))) + 
+  geom_freqpoly(aes(color = gender), binwidth = 10) + 
+  scale_x_continuous(limits = c(0, 1000), breaks = seq(0, 1000, 50)) + 
+  facet_wrap(~gender)
 
 by(pf$friend_count, pf$gender, sum)
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35770970-4515ab8a-091d-11e8-9b71-2e596b39152e.jpg" width="700" height="230" />
 
-But the plots above do not show which gender has more friends on avg. We need proportion ! 
- - Change y-axis to show proportion: `ggplot(aes(x = variable, y = ..count../sum(..count..))` 
+But the plots above do not show which gender has more friends on avg. We need proportion !
+ - See the **proportion**:  Which side has more friends on average?
+   - `sum(..count..)` will sum across color, so the proportions displayed are based on total users. 
+   - `y = ..density...` will plot these proportions within each group
+ - Change y-axis to show proportion instead of raw counts: `ggplot(aes(x = variable, y = ..count../sum(..count..))` 
  - Without `facet_wrap(~gender)`
  - Adding xlab(), ylab()
 ```
@@ -166,20 +172,21 @@ ggplot(aes(x = friend_count, y = ..count../sum(..count..)), data = subset(pf, !i
 <img src="https://user-images.githubusercontent.com/31917400/35770870-a88164cc-091b-11e8-8f25-ba37273f8647.jpg" width="300" height="190" />
 
  - [7) Comparison II. **Boxplot** and comparing each distribution]
-   - Check if Normally distributed ?
+   - `+ geom_boxplot()`
    - In the boxplot, y-axis is no longer row count, but it should be the variable normally distributed. So we pass in the **categorical** to x, and the **numerical** to y.
    - 1)So many outliers, then focus on the box only(limiting 'friend_counts'(y-axis) between 0 and 1000) 
-   - 2)But they remove our data from calculation and our boxes were affected, then go with the **"coord_cartesian layer"**!
+   - 2)But they remove our data from calculation and our boxes were affected, then go with the **"coord_cartesian layer"** instead of scale_layer !
    - 3)Let's try boxes only..
 <img src="https://user-images.githubusercontent.com/31917400/35803594-3d23e450-0a6c-11e8-95c4-b23757f52055.jpg" width="400" height="70" />
 
 ```
-ggplot(aes(x=gender, y=friend_count), data = subset(pf, !is.na(gender))) + geom_boxplot() 
->>>[...] + scale_y_continuous(limits = c(1,1000))
+ggplot(aes(x=gender, y=friend_count), data = subset(pf, !is.na(gender))) + 
+  geom_boxplot() + 
+[...] + scale_y_continuous(limits = c(1,1000))
 
->>>[...] + coord_cartesian(ylim = c(1,1000))
+[...] + coord_cartesian(ylim = c(1,1000))
 by(pf$friend_count, pf$gender, summary) 
->>>[...] + coord_cartesian(ylim = c(0,250))
+[...] + coord_cartesian(ylim = c(0,250))
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35804020-e14a897a-0a6d-11e8-98cc-dcc327622762.jpg" />
 
