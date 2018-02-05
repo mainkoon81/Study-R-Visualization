@@ -165,9 +165,9 @@ ggplot(aes(x = friend_count, y = ..count../sum(..count..)), data = subset(pf, !i
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35770870-a88164cc-091b-11e8-8f25-ba37273f8647.jpg" width="300" height="190" />
 
- - [7) Comparison II. **Boxplot** and  ]
+ - [7) Comparison II. **Boxplot** and comparing each distribution]
    - Check if Normally distributed ?
-   - In the boxplot, y-axis is no longer row count, but it should be the variable normally distributed. So we pass in the categorical to x, and the numerical to y.
+   - In the boxplot, y-axis is no longer row count, but it should be the variable normally distributed. So we pass in the **categorical** to x, and the **numerical** to y.
    - 1)So many outliers, then focus on the box only(limiting 'friend_counts'(y-axis) between 0 and 1000) 
    - 2)But they remove our data from calculation and our boxes were affected, then go with the **"coord_cartesian layer"**!
    - 3)Let's try boxes only..
