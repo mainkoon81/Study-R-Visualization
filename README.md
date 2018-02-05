@@ -220,8 +220,7 @@ sum(pf$mobile_check_in==1)/length(pf$mobile_check_in)
 ### II. Two Variable
 
 >Phase_02. Tackle the issue - plotting 'actual_audience_size'(x) vs 'perceived_audience_size'(y)
- - The 45 degree diagonal line would be the perfect accuracy line.
- - Usually it's best to use a scatter plot to examine the relationship b/w two continuous variables. 
+ - Usually it's best to use a scatter plot to examine the relationship b/w two continuous variables.  
  
  - [1) Scatter of 'friend_count' vs **age**]
    - `+ geom_point(alpha=1/20)`
