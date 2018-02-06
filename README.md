@@ -240,7 +240,18 @@ We want to do some **transformation on y-axis** to get a better visualization of
  - The difference between transforming the 'scales' and transforming the 'coordinate system' is that:
    - Scale transformation occurs BEFORE statistics.
    - Coordinate transformation afterwards. Coordinate transformation also changes the shape of geoms.
- - `+ geom_point(position = position_jitter(h=0))` 
+ - If we want 'jitter', then use `+ geom_point(position = position_jitter(h=0))` where we set the min-height of jitter as '0' because we have '0' value on y-axis, and in jitter, the value is trembling and might end up with negative value and those sqrt would be imaginary. 
+```
+ggplot(aes(x=age, y=friend_count), data=pf) + geom_point(alpha=1/20) + xlim(13, 90) 
+  + scale_y_sqrt() + geom_smooth(method = 'lm') 
+
+ggplot(aes(x=age, y=friend_count), data=pf) + geom_point(alpha=1/20) + xlim(13, 90) 
+  + coord_trans(y='sqrt')
+
+ggplot(aes(x=age, y=friend_count), data=pf) + geom_point(alpha=1/20, position = position_jitter(h=0)) + xlim(13, 90) 
+  + coord_trans(y='sqrt')
+```
+<img src="https://user-images.githubusercontent.com/31917400/35880379-afd913c6-0b75-11e8-88b1-334d11681924.jpg" />
 
 
 
