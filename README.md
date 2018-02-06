@@ -222,7 +222,7 @@ sum(pf$mobile_check_in==1)/length(pf$mobile_check_in)
 >Phase_02. Tackle the issue - plotting 'actual_audience_size'(x) vs 'perceived_audience_size'(y)
  - Usually it's best to use a scatter plot to examine the relationship b/w two continuous variables.  
  
- - [1) Scatter of **'friend_count'** vs **age**]
+ - [1) Scatter of **'friend_count'** vs **'age'**]
    - `+ geom_point(alpha=1/20)`
    - `+ xlim(n, n)`
    - Note: OverPlotting - Some of these pt are **spread out from one another(verically)** while others are stacked right on top of each other. Some are overplotted. We can't see how many pt are in each region. so we set the transparency of pt using `geom_point(alpha)`.
@@ -234,9 +234,12 @@ ggplot(aes(x=age, y=friend_count), data = pf) + geom_jitter(alpha=1/20) + xlim(1
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35819924-0fb29f7c-0a9c-11e8-840a-efd1e9b1a0e6.jpg" />
 
-We want to do some transformation on y-axis to get a better visualization of the data. 
+We want to do some **transformation on y-axis** to get a better visualization of the data. 
  - `+ scale_y_sqrt()` and `+ geom_smooth(method = 'lm')`
  - `+ coord_trans(y='sqrt')`
+ - The difference between transforming the 'scales' and transforming the 'coordinate system' is that:
+   - Scale transformation occurs BEFORE statistics.
+   - Coordinate transformation afterwards. Coordinate transformation also changes the shape of geoms.
  - `+ geom_point(position = position_jitter(h=0))` 
 
 
