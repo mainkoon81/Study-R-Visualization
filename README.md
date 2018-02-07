@@ -325,6 +325,8 @@ ggplot(aes(x=age, y=friend_count), data=pf) +
 >The first plot: well..the 90% of data values are still below 1000. The second plot: well..in b/w 35 to 50, the friend count falls below 250, so 90% of users in this group have.. < 250 friends
 
  - Correlation: 'age' and 'friend_count'..Let's see the strength of the relationship!
+   - The `with()` function applys an expression to a dataset.
+   - The `by()` function applys a function to each level of a factor or factors.
 ```
 cor.test(pf$age, pf$friend_count, method = 'pearson')
 with(pf, cor.test(pf$age, pf$friend_count, method = 'pearson'))
