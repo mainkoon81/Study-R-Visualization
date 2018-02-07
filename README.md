@@ -259,12 +259,85 @@ Normally, it's impossible to judge important qualities from a scatter display (j
  - Library: `dplyr`
    - It allows us to split up the dataframe and apply a function to SOME parts of the data !!!!
    - It provides a set of tools for efficiently manipulating dataframes. 
-   - It lets you have individual functions that correspond to the most common operations (group_by, summarise, mutate, filter, select and arrange).
+     - `group_by()` 
+     - `summarise()`: reduces multiple, scattered values down to a grouped, single value..just like a pivot table? 
+       - This func is typically used on grouped data created by `group_by()`. The output will have one row for each group. we used this when the expected groups are SO FUCKING a lot !
+       - the `n()` is only useful in `summarise()` function and it reports how many people are in each group ^..^..discrete? categorical?
+     - `mutate()`
+     - `filter()`
+     - `select()`
+     - `arrange()`
 ```
 install.packages('dplyr')
 library(dplyr)
 ```
- - 
+ - want to group our data by 'age'? Create a new dataset! 
+ - create new dataset, using: `summarise(data, variable that i want to creat, the NO.of users in each group)`
+ - so...it creates a...pivot table...then sort out in an ascending order
+```
+age_groups <- group_by(pf, age)
+pf_fcount_by_age <- summarise(age_groups, f_count_mean = mean(friend_count), f_count_median = median(friend_count), n=n())
+pf_fcount_by_age <- arrange(pf_fcount_by_age, by=age)
+head(pf_fcount_by_age, 50) 
+```
+<img src="https://user-images.githubusercontent.com/31917400/35917431-05e374b0-0c06-11e8-84bd-f0af369197aa.jpg" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
