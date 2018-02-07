@@ -365,6 +365,12 @@ The correlation gives you a bounded measurement that can be interpreted independ
 
 That is, the **slope** of the regression and the **correlation** coincide when SD(Y) = SD(X). They only coincide when the two variables are on the same scale, in some sense. The most common way of achieving this is through **standardization**. When you are doing multiple regression, this can be more complicated due to multicollinearity.  
 
+ - Let's quantify this relationship! 
+```
+cor.test(pf$www_likes_received, pf$likes_received, method = 'pearson') 
+```
+This gives us a correlation of 0.948. This is a strong positive correlation, and in reality most variables are not correlated that closely. The correlation that we just found was an artifact of the nature of the variables. One of them was really a superset of the other.
+
 
 
 
