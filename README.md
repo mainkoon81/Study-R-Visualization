@@ -288,7 +288,7 @@ ggplot(aes(x=age, y=f_count_mean), data=pf_fcount_by_age) + geom_line()
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35918378-7f84d554-0c09-11e8-868e-43284f1f84bf.jpg" />
 
-
+well..in older ages, our estimates are highly variable for friend_count_mean..in ages 30 to 60, the mean count is hovering about over 100...
 
 
 
