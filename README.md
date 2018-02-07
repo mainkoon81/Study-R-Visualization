@@ -324,12 +324,22 @@ ggplot(aes(x=age, y=friend_count), data=pf) +
 
 >The first plot: well..the 90% of data values are still below 1000. The second plot: well..in b/w 35 to 50, the friend count falls below 250, so 90% of users in this group have.. < 250 friends
 
+ - Correlation: 'age' and 'friend_count'..Let's see the strength of the relationship!
+```
+cor.test(pf$age, pf$friend_count, method = 'pearson')
+with(pf, cor.test(pf$age, pf$friend_count, method = 'pearson'))
+```
+<img src="https://user-images.githubusercontent.com/31917400/35931338-46f1e7f4-0c2c-11e8-80f9-8f916a0f67a4.jpg" width="600" height="120" />
 
+>-0.027 so... there is no significant relationship...
 
+ - The relationship is not linear or not monotonic...i mean...not flat..and we don't want to include the older ages, since they are likely to be incorrect. Let's recalculate the corr.
+```
+with(subset(pf, age<=70), cor.test(age, friend_count, method = 'pearson')) #as the age increases, friend count decreases...but it's just a descriptive statistics..we don't think age is not only factor that causes the decrease of friend count...so we need inferential statistics..-0.17
 
-
-
-
+with(subset(pf, age<=70), cor.test(age, friend_count, method = 'spearman')) #spearman(the rank correlation measure) gives us 'rho' instead of 'cor'...that also measures "monotonic relationship"...-0.25
+```
+<img src="https://user-images.githubusercontent.com/31917400/35931723-640b1cec-0c2d-11e8-9b94-c64f80ede048.jpg" width="800" height="120" />
 
 
 
