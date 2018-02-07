@@ -341,6 +341,26 @@ with(subset(pf, age<=70), cor.test(age, friend_count, method = 'spearman')) #spe
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35931723-640b1cec-0c2d-11e8-9b94-c64f80ede048.jpg" width="800" height="120" />
 
+ - [3) Scatter of **likes_received**(y) vs. **www_likes_received**(x)]
+```
+ggplot(aes(x=www_likes_received, y=likes_received), data = pf) + geom_point()
+```
+Let's ignore some funky outlier..so limit the x, y-axis..using `quantile()`
+```
+ggplot(aes(x=www_likes_received, y=likes_received), data = pf) + geom_point() +
+  xlim(0, quantile(pf$www_likes_received, 0.95)) +
+  ylim(0, quantile(pf$likes_received, 0.95)) +
+  geom_smooth(method = 'lm', color='red')
+```
+<img src="https://user-images.githubusercontent.com/31917400/35943037-b6cffe4e-0c4f-11e8-903c-017c0434fc19.jpg" width="800" height="210" />
+
+>The correlation coefficient measures the "tightness" of linear relationship between two variables and is bounded between -1 and 1, inclusive.
+>The regression slope measures the "steepness" of the linear relationship between two variables and can take any value from −∞ to +∞.
+<img src="https://user-images.githubusercontent.com/31917400/35944238-aeffa6fc-0c53-11e8-8fc8-218a781716c1.jpg" />
+
+>But the correlation coefficient is invariant under a linear transformation of either X or Y, and the slope of the regression line when both X and Y have been transformed to **z-scores** is the correlation coefficient. That is, the **slope** of the regression and the **correlation** coincide when SD(Y) = SD(X). That is, they only coincide when the two variables are on the same scale, in some sense. The most common way of achieving this is through **standardization**. When you are doing multiple regression, this can be more complicated due to multicollinearity.  
+
+> The correlation gives you a bounded measurement that can be interpreted independently of the scale of the two variables. The closer the estimated correlation is to ±1, the closer the two are to a perfect linear relationship. The regression slope, in isolation, does not tell you that piece of information.
 
 
 
