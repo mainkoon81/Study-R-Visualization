@@ -266,7 +266,7 @@ Normally, it's impossible to judge important qualities from a scatter display (j
      - `mutate()`
      - `filter()`
      - `select()`
-     - `arrange()`
+     - `arrange(data, by=desc(variable))`
 ```
 install.packages('dplyr')
 library(dplyr)
@@ -282,6 +282,11 @@ head(pf_fcount_by_age, 50)
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35917431-05e374b0-0c06-11e8-84bd-f0af369197aa.jpg" />
 
+ - Plot mean friend count vs. age using a line graph.
+```
+ggplot(aes(x=age, y=f_count_mean), data=pf_fcount_by_age) + geom_line() 
+```
+<img src="https://user-images.githubusercontent.com/31917400/35918378-7f84d554-0c09-11e8-868e-43284f1f84bf.jpg" />
 
 
 
