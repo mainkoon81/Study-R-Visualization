@@ -319,8 +319,7 @@ ggplot(aes(x=age, y=friend_count), data=pf) +
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35929570-b00c38f2-0c27-11e8-81b6-cdb2ffc7d278.jpg" />
 
-#interpret: well..the 90% of data values are still below 1000.
-#zoom-in interpret: well..in b/w 35 to 50, the friend count falls below 250..so 90% of users in this group have.. < 250 friends
+>The first plot: well..the 90% of data values are still below 1000. The second plot: well..in b/w 35 to 50, the friend count falls below 250, so 90% of users in this group have.. < 250 friends
 
 
 
