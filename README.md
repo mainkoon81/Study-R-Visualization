@@ -220,7 +220,10 @@ sum(pf$mobile_check_in==1)/length(pf$mobile_check_in)
 ### II. Two Variable
 
 >Phase_02. Tackle the issue - plotting 'actual_audience_size'(x) vs 'perceived_audience_size'(y)
- - Usually it's best to use a scatter plot to examine the relationship b/w two continuous variables.  
+ - Usually it's best to use a scatter plot to examine the relationship b/w two continuous variables. 
+ - Here we have these scatter plots, where we're showing people's raw guesses of their perceived audience size against their actual audience size. And you can see they all fall below the perfect accuracy line. So people underestimate. But it's still kind of hard to get the big picture from these scatter plots and so, we have some histograms to capture more summary data. Using the histogram showing how much people over/underestimate their audience size. histogram ==> the #users vs (actual% - perceived%)
+<img src="https://user-images.githubusercontent.com/31917400/35930965-49d990ee-0c2b-11e8-86c7-fb9aff037977.jpg" />
+
  
  - [1) Scatter of **'friend_count'** vs **'age'**]
    - `+ geom_point(alpha=1/20)`
@@ -288,7 +291,7 @@ ggplot(aes(x=age, y=f_count_mean), data=pf_fcount_by_age) + geom_line()
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35918378-7f84d554-0c09-11e8-868e-43284f1f84bf.jpg" />
 
-well..in older ages, our estimates are highly variable for friend_count_mean..in ages 30 to 60, the mean count is hovering about over 100...
+>well..in older ages, our estimates are highly variable for friend_count_mean..in ages 30 to 60, the mean count is hovering about over 100...
 
  - We can overlay our original scatter plot with the summary plots on its top. 
 ```
