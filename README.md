@@ -290,9 +290,37 @@ ggplot(aes(x=age, y=f_count_mean), data=pf_fcount_by_age) + geom_line()
 
 well..in older ages, our estimates are highly variable for friend_count_mean..in ages 30 to 60, the mean count is hovering about over 100...
 
+ - We can overlay our original scatter plot with the summary plots on its top. 
+```
+ggplot(aes(x=age, y=friend_count), data=pf) + 
+  geom_point(alpha=1/20, position = position_jitter(h=0), color='orange') +
+  xlim(13, 90) + coord_trans(y='sqrt') +
+  
+  geom_line(stat = 'summary', fun.y = mean) + 
+#Black: this is new!! the y is mean 'friend_count' by age over my raw data. we can see how dispersed the data is around the means..
+  geom_line(stat = 'summary', fun.y = quantile, fun.args=list(probs = 0.1), linetype=2, color='blue') + 
+#Blue: 10% quantile: the value that cuts off the first 10 percent of the data values when it is sorted in ascending order. 
+  geom_line(stat = 'summary', fun.y = quantile, fun.args=list(probs = 0.9), linetype=2, color='red') +
+#Red: 90% quantile 
+  geom_line(stat = 'summary', fun.y = quantile, fun.args=list(probs = 0.5), linetype=2, color='green') 
+#Green: 50% quantile("median")
+```
+ - We can zoom in. If we use `coord_cartesian(xlim = c(13, 90))` instead of `xlim()`and `coord_trans()`, we can zoom in. 
+```
+ggplot(aes(x=age, y=friend_count), data=pf) + 
+  geom_point(alpha=1/20, position = position_jitter(h=0), color='orange') +
+  
+  coord_cartesian(xlim = c(13, 70), ylim = c(0,1000)) + 
 
+  geom_line(stat = 'summary', fun.y = mean) + 
+  geom_line(stat = 'summary', fun.y = quantile, fun.args=list(probs = 0.1), linetype=2, color='blue') + 
+  geom_line(stat = 'summary', fun.y = quantile, fun.args=list(probs = 0.9), linetype=2, color='red') +  
+  geom_line(stat = 'summary', fun.y = quantile, fun.args=list(probs = 0.5), linetype=2, color='green') 
+```
+<img src="https://user-images.githubusercontent.com/31917400/35929570-b00c38f2-0c27-11e8-81b6-cdb2ffc7d278.jpg" />
 
-
+#interpret: well..the 90% of data values are still below 1000.
+#zoom-in interpret: well..in b/w 35 to 50, the friend count falls below 250..so 90% of users in this group have.. < 250 friends
 
 
 
