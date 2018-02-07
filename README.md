@@ -374,7 +374,16 @@ cor.test(pf$www_likes_received, pf$likes_received, method = 'pearson')
 This gives us a correlation of 0.948. This is a strong positive correlation, and in reality most variables are not correlated that closely. The correlation that we just found was an artifact of the nature of the variables. One of them was really a superset of the other.
 
 
+### III. Multi Variable
 
+>Phase_03. Tackle the issue - plotting 'actual_audience_size'(x) vs 'perceived_audience_size'(y)
+ - Okay, so people aren't very good at guessing their audience sizes. But maybe, maybe people who are older, maybe they have a better sense, than teenagers, for example. 
+ - So the next plot is another scatter plot, but this time we added a **third level**, where we added color to represent the age of the survey respondent. And you can see again we have this horizontal stripes for people who are guessing that there are 50 or 100 people in their audience. But I don't see any pattern in the color. We do reach dead ends. This is one example of kind of a failure. I can tell if younger people were more accurate than older people, there is too much over plotting. In this plot there are too many dots on top of each other..
+<img src="https://user-images.githubusercontent.com/31917400/35946556-2fda77ae-0c5c-11e8-9d0c-302632b73627.jpg" width="600" height="200" /> 
+ 
+ - [1) Scatter of **'friend_count'** vs **'age'** vs **'gender'**]
+   - Previously we noted that female users have more friends on average than male users. And, we might wonder, .... "Is this just because female users have a different "age" distribution ?" Or, maybe c.o.n.d.i.t.i.o.n.a.l. on age, the differences are actually larger. (gender vs friend_count)----- age?
+   - 
 
 
 
