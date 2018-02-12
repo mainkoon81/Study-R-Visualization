@@ -55,7 +55,7 @@ ggplot(data = pf, aes(x = dob_day)) + geom_histogram(binwidth = 1) + scale_x_con
    - Faceting by 'gender': `+ facet_wrap( ~ gender)` or '+ facet_grid(gender ~ .)' 
    - then ommiting NA values..it sould be dealt within the 'data' level: `data=subset(pf, !is.na(gender))`
    - IF the relationship include ****categorical variable**** (such as 'gender'), 
-     - STATISTICS ? 
+     - Find STATISTICS ? 
        - by the categorical variable, what we want is 'count' : `table(categorical_variable)`
        - by the categorical variable, what we want is 'other function' : `by(target_variable, categorical_variable, function)`
      
