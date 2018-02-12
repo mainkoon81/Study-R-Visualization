@@ -152,7 +152,7 @@ But the plots above do not show which gender has more friends on avg. We need pr
    - `sum(..count..)` will sum across color, so the proportions displayed are based on total users. 
    - `y = ..density...` will plot these proportions within each group
  - Change y-axis to show proportion instead of raw counts: `ggplot(aes(x = variable, y = ..count../sum(..count..))` 
- - Without `facet_wrap(~gender)`
+ - Without `facet_wrap(~gender)` which gives 'overlay' !
  - Adding xlab(), ylab()
 ```
 ggplot(aes(x = friend_count, y = ..count../sum(..count..)), data = subset(pf, !is.na(gender))) +
