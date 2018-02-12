@@ -115,7 +115,7 @@ ggplot(aes(x = age), data = pf) +
    - If we have 'Over-Dispersed' data (the term is always relative to some particular posited distribution..Poisson? Gamma?) 
      - **too long tailed shape**: Some have 100 times the median value...some have an order of magnitude..
      - **Shorten the tail**: to see SD, Orders of magnitude, the pattern more clearly, etc
-       - Take 'log' or 'sqrt' in the variable
+       - Take 'log' or 'sqrt' in the variable: `ggplot(aes(x=log(), data)`, `ggplot(aes(x=sqrt(), data)`
        - Take 'log' or 'sqrt' in a scaling layer: `+ scale_x_log()`, `+ scale_x_sqrt()`
          - what's the difference?: **x-axis labeling**. A scaling layer method returns actual 'friend_count' on x-axis. 
    - If we need to use regression
