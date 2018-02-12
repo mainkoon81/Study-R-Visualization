@@ -98,19 +98,7 @@ ggplot(aes(x = tenure/365), data=subset(pf, !is.na(gender))) +
 ```   
 <img src="https://user-images.githubusercontent.com/31917400/35768532-0c5ef29c-08f5-11e8-944f-4e41967b2051.jpg" width="600" height="170" />   
 
- - [4) Histogram of Users' **age**]
-   - 'age' on x-axis
-   - In x-axis, the tick-marks ranged 0 to 113 (by 5), and..binwidth would be 1.
-```
-summary(pf$age) 
-
-ggplot(aes(x = age), data = pf) +
-  geom_histogram(binwidth = 1, color='black', fill = '#5760AB') + scale_x_continuous(breaks = seq(0, 113, 5)) + 
-  xlab('Ages using FB') + ylab('NO.users in sample')
-```
-<img src="https://user-images.githubusercontent.com/31917400/35768286-4383a3e8-08f1-11e8-9164-94dbea6dfa95.jpg" width="300" height="170" /> 
- 
- - [5) Data Transformation of Users' **friend size**]
+ - [4) Data Transformation of Users' **friend size**]
    - To get a better look at the data... 
    - If we have 'Over-Dispersed' data (the term is always relative to some particular posited distribution..Poisson? Gamma?) 
      - **too long tailed shape**: Some have 100 times the median value...some have an order of magnitude..
@@ -139,7 +127,7 @@ grid.arrange(p1,p2,p3, ncol=1)
 ```
 <img src="https://user-images.githubusercontent.com/31917400/36116065-f1058850-102c-11e8-9e1f-4900eab941b0.jpg" /> 
 
- - [6) Comparison I. **Frequency Polygon**, Connecting all counts and comparing each distribution]
+ - [5) Comparison I. **Frequency Polygon**, Connecting all counts and comparing each distribution]
    - `+ geom_freqpoly(aes(color = categorical_variable), binwidth)`
    - The shape of the frequency polygon depends on how our bins are set up - the height of the lines are the same as the bars in individual histograms, but the lines are easier to make a comparison with since they are on the same axis. 
 
@@ -175,7 +163,7 @@ ggplot(aes(x = friend_count, y = ..count../sum(..count..)), data = subset(pf, !i
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35770870-a88164cc-091b-11e8-8f25-ba37273f8647.jpg" width="300" height="190" />
 
- - [7) Comparison II. **Boxplot** and comparing each distribution]
+ - [6) Comparison II. **Boxplot** and comparing each distribution]
    - `+ geom_boxplot()`
    - In the boxplot, y-axis is no longer row count, but it should be the variable normally distributed. So we pass in the **categorical** to x, and the **numerical** to y.
    - 1)So many outliers, then focus on the box only(limiting 'friend_counts'(y-axis) between 0 and 1000) 
