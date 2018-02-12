@@ -137,7 +137,7 @@ p3 <- p1 + scale_x_sqrt()
 
 grid.arrange(p1,p2,p3, ncol=1)
 ```
-<img src="https://user-images.githubusercontent.com/31917400/35769867-c082c712-0909-11e8-964c-7b9d82821158.jpg" /> 
+<img src="https://user-images.githubusercontent.com/31917400/36116065-f1058850-102c-11e8-9e1f-4900eab941b0.jpg" /> 
 
  - [6) Comparison I. **Frequency Polygon**, Connecting all counts and comparing each distribution]
    - `+ geom_freqpoly(aes(color = categorical_variable), binwidth)`
