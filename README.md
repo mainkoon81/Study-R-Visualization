@@ -52,7 +52,7 @@ ggplot(data = pf, aes(x = dob_day)) + geom_histogram(binwidth = 1) + scale_x_con
  - [2) Histogram of Users' **friend size**]
    - 'friends_count' on x-axis
    - Outliers? then 'Limiting axis': `+ scale_x_continuous(limits = c(n, n), breaks)`
-   - Faceting by 'gender': `+ facet_wrap( ~ variable)` or '+ facet_grid(gender ~ .)' 
+   - Faceting by 'gender': `+ facet_wrap( ~ gender)` or '+ facet_grid(gender ~ .)' 
    - then ommiting NA values..it sould be dealt within the 'data' level: `data=subset(pf, !is.na(gender))`
    - IF the relationship include categorical variable (such as 'gender'), 
      - STATISTICS - which side has more friend on average?
