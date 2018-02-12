@@ -84,7 +84,7 @@ by(pf$friend_count, pf$gender, summary)
  - [3) Histogram of Users' **tenure by year** - how many days they've used facebook so far?]
    - 'tenure/365' on x-axis
    - Determines the color of the outline, area_inside in a plot: `+ geom_histogram(binwidth, color, fill)`
-   - How to set up bins? Using `summary`, find mix&max. In x-axis, the tick-marks ranged 0 to 9 (by 1), and the plot limit is 0 to 7..binwidth be 0.25 
+   - How to set up bins? Using `summary()`, find mix&max. In x-axis, the tick-marks ranged 0 to 9 (by 1), and the plot limit is 0 to 7..binwidth be 0.25 
    - How about gender difference?: `+ facet_wrap(~gender)`
 ```
 ggplot(aes(x = tenure), data = pf) +
