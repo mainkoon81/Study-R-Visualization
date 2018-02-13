@@ -406,12 +406,12 @@ ggplot(aes(x = age, y = median_friend_count), data = pf.fc_by_age_gender) +
 
  - [2) Thinking in Ratios - ]
    - It seems like the gender difference is largest for our young users. It would be to put this in relative terms though. So, let's answer a different question. "**How many times more friends**" does the average female user have than the male user? Maybe, females have twice as many friends as male users, or maybe it's ten times as many friends.....
-   - We want to plot the ratio of females to males to determine how many times more friends the average female user has, compared to the number of friends the average male user has...Plot the ratio of the female to male median friend counts using the dataframe **'pf.fc_by_age_gender2'**.
+   - We want to plot the **ratio of females to males** to determine how many times more friends the average female user has, compared to the number of friends the average male user has...Plot the ratio of the female to male median friend counts using the dataframe **'pf.fc_by_age_gender2'**.
 
 # Create a new summary dataset !!
->Notice how the variables that we grouped over -male and female-, have been repeated. We need to rearrange our data a little bit. Right now, our data is in 'long format'. We have many rows. What we need is 'wide format' with values of the 'median_friend_count' conditional on 'gender'.
+>Notice how the variables we grouped over -male and female-, have been repeated. We need to rearrange our data a little bit. Right now, our data is in 'long format'(pf.fc_by_age_gender). We have many rows. What we need is 'wide format' with values of the 'median_friend_count 'conditional on 'gender'(pf.fc_by_age_gender2).
  - `dcast(data, keep ~ expand, key_value)`: **Reshaping** the dataset: We specify the dataset we are going to change and modify and then we put in a formula. Now, the first part of the formula (the left of the tilde sign), will list the variables I want to keep (age). On the right side of the tilde, we use the gender variable since we want male and female users to have **their own columns** for median friend count in the data frame. And finally, we set "value.var" because it holds the k.e.y m.e.a.s.u.r.e.m.e.n.t.s. or their values in our new dataframe.
- - `melt()`: Converting the wide-format(expanded for human) back to the original long-format(shrunk for machine).
+ - Note: `melt()`: Converting the wide-format(expanded for human) back to the original long-format(shrunk for machine).
 ```
 install.packages('reshape2')
 library(reshape2)
@@ -419,12 +419,20 @@ library(reshape2)
 pf.fc_by_age_gender2 <- dcast(pf.fc_by_age_gender, age ~ gender, value.var = 'median_friend_count')
 head(pf.fc_by_age_gender2, 10)
 ```
- - Ratio plot: 
-
-
-
-
-<img src="https://user-images.githubusercontent.com/31917400/36158322-f713adba-10d3-11e8-8b01-cd5cf765a4fd.jpg" width="700" height="200" /> 
+ - Adding a baseline in the ratio plot
+   - `+ geom_hline(yintercept, linetype)`: A horizontal line to the plot with a y-intercept of 1, with the linetype of...
+     - 0 = blank 
+     - 1 = solid
+     - 2 = dashed
+     - 3 = dotted
+     - 4 = dotdash
+     - 5 = longdash
+     - 6 = twodash
+```
+ggplot(aes(x=age, y=female/male), data = pf.fc_by_age_gender2) + geom_line() + 
+  geom_hline(yintercept=1, linetype=2, alpha=0.3)
+```
+<img src="https://user-images.githubusercontent.com/31917400/36177967-59931ee0-110f-11e8-8d0e-246b5db097c7.jpg" /> 
 
 
 
