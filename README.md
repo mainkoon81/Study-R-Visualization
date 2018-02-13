@@ -228,7 +228,7 @@ ggplot(aes(x=age, y=friend_count), data = pf) + geom_jitter(alpha=1/20) + xlim(1
 
 We want to do some **transformation on y-axis** to get a better visualization of the data. 
  - `+ scale_y_sqrt()` and `+ geom_smooth(method = 'lm')`
- - `+ coord_trans(y='sqrt')`
+ - `+ coord_trans(y='sqrt')`: transforming (cf...'coord_cartesian(ylim=c(n, n))': limiting)
  - The difference between transforming the 'scales' and transforming the 'coordinate system' is that:
    - Scale transformation occurs BEFORE statistics.
    - Coordinate transformation afterwards. Coordinate transformation also changes the shape of geoms.
