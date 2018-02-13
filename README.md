@@ -263,7 +263,7 @@ Normally, it's impossible to judge important qualities from a scatter display (j
 install.packages('dplyr')
 library(dplyr)
 ```
- - want to group our data by 'age'? Create a new dataset! 
+ - want to group our data by the values of 'age'? Create a new dataset! 
  - create new dataset, using: `summarise(data, variable that i want to creat, the NO.of users in each group)`
  - so...it creates a...pivot table...then sort out in an ascending order
 ```
