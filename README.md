@@ -216,7 +216,7 @@ sum(pf$mobile_check_in==1)/length(pf$mobile_check_in)
  
  - [1) Scatter of **'friend_count'** vs **'age'**]
    - `+ geom_point(alpha=1/20)`
-   - `+ xlim(n, n)`
+   - `+ xlim(n, n)` (but what about 'scale_x_continuous(limits, breaks)' ?????differ?????)
    - Note: OverPlotting - Some of these pt are **spread out from one another(verically)** while others are stacked right on top of each other. Some are overplotted. We can't see how many pt are in each region. so we set the transparency of pt using `geom_point(alpha)`.
 ```
 summary(pf$age)
