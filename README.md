@@ -378,12 +378,13 @@ This gives us a correlation of 0.948. This is a strong positive correlation, and
 ```
 ggplot(aes(x=gender, y=age), data = subset(pf, !is.na(gender))) + geom_boxplot() + stat_summary(fun.y=mean, geom='point', shape=4)
 ```
-   - Since male users are a bit younger, we might actually think a simple 'male-to-female comparison' doesn't capture their substantial differences in friend_count. Let's look at median_friend_count by age and gender instead.
+   - Since male users on avg are a bit younger, we might actually think a simple 'male-to-female comparison' doesn't capture their substantial differences in friend_count. Let's look at median_friend_count by age and gender instead.
 ```
 ggplot(aes(x=age, y=friend_count), data = subset(pf, !is.na(gender))) + geom_line(aes(color=gender), stat = 'summary', fun.y=median)
 ```
 <img src="https://user-images.githubusercontent.com/31917400/36158322-f713adba-10d3-11e8-8b01-cd5cf765a4fd.jpg" width="700" height="200" /> 
 
+   - We can see that nearly everywhere the median friend count is larger for women than it is for men. 
 
 
 
