@@ -247,7 +247,9 @@ ggplot(aes(x=age, y=friend_count), data=pf) + geom_point(alpha=1/20, position = 
 
  - [2) Further thought about **'friend_count'** vs **'age'**]
 
-Normally, it's impossible to judge important qualities from a scatter display (just plotting every single point) only..coz we need to see mean, median, variance varies with another variables.  For example, we ask..**how does the "average" friend count varies over age?** (sounds like a moving averages smoothing out?) To do this, we could start by creating a table that for each age gives us the mean, median for friend count(conditional mean, median)
+Normally, it's impossible to judge important qualities from a scatter display (just plotting every single point) only..coz we need to see mean, median, variance varies with another variables.  For example, we ask..**how does the "average" friend count varies over age?** (sounds like a moving averages smoothing out?) To do this, 
+# Create a new dataset !!
+We could start by creating a table that for each age gives us the mean, median for friend count(conditional mean, median)
  - Library: `dplyr`
    - It allows us to split up the dataframe and apply a function to SOME parts of the data !!!!
    - It provides a set of tools for efficiently manipulating dataframes. 
