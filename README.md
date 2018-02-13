@@ -377,7 +377,8 @@ This gives us a correlation of 0.948. This is a strong positive correlation, and
 
 We want to add 'mean' on the boxplot ? `+ stat_summary(fun.y, geom, shape)`   
 ```
-ggplot(aes(x=gender, y=age), data = subset(pf, !is.na(gender))) + geom_boxplot() + stat_summary(fun.y=mean, geom='point', shape=4)
+ggplot(aes(x=gender, y=age), data = subset(pf, !is.na(gender))) + 
+  geom_boxplot() + stat_summary(fun.y=mean, geom='point', shape=4)
 ```
 Since male users on avg are a bit younger, we might actually think a simple 'male-to-female comparison' doesn't capture their substantial differences in friend_count. Let's look at median_friend_count by age and gender instead. Then we can see that nearly everywhere the median friend count is larger for women than it is for men. `+ geom_line(stat, fun.y)`
 ```
