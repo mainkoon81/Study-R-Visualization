@@ -251,9 +251,8 @@ Normally, it's impossible to judge important qualities from a scatter display (j
  - Library: `dplyr`
    - It allows us to split up the dataframe and apply a function to SOME parts of the data !!!!
    - It provides a set of tools for efficiently manipulating dataframes. 
-     - `group_by()` 
-     - `summarise()`: reduces multiple, scattered values down to a grouped, single value..just like a pivot table? 
-       - This func is typically used on grouped data created by `group_by()`. The output will have one row for each group. we used this when the expected groups are SO FUCKING a lot !
+     - `group_by()` + `summarise()`: reduces multiple, scattered values down to a grouped, single value..just like a pivot table? 
+       - `summarise()` is typically used on grouped data created by `group_by()`. The output will have one row for each group. we used this when the expected groups are SO FUCKING a lot - 10years_old, 11 years_old,....100years_old,...! (this means...otherwise..groups are categorical variables and `by(target, category, func)` can handle it).  
        - the `n()` is only useful in `summarise()` function and it reports how many people are in each group ^..^..discrete? categorical?
      - `mutate()`
      - `filter()`
