@@ -316,7 +316,7 @@ ggplot(aes(x=age, y=friend_count), data=pf) +
 
  - Correlation: 'age' and 'friend_count'..Let's see the strength of the relationship!
    - The `with()` function applys an expression to a dataset.
-   - The `by()` function applys a function to each level of a factor or factors.
+   - The `by()` function applys a function to each level of a factor or factors(categorical variables).
 ```
 cor.test(pf$age, pf$friend_count, method = 'pearson')
 with(pf, cor.test(pf$age, pf$friend_count, method = 'pearson'))
