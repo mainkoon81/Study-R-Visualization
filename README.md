@@ -372,7 +372,8 @@ This gives us a correlation of 0.948. This is a strong positive correlation, and
  - So the next plot is another scatter plot, but this time we added a **third level**, where we added color to represent the age of the survey respondent. And you can see again we have this horizontal stripes for people who are guessing that there are 50 or 100 people in their audience. But I don't see any pattern in the color. We do reach dead ends. This is one example of kind of a failure. I can tell if younger people were more accurate than older people, there is too much over plotting. In this plot there are too many dots on top of each other..
 <img src="https://user-images.githubusercontent.com/31917400/35946556-2fda77ae-0c5c-11e8-9d0c-302632b73627.jpg" width="600" height="200" /> 
  
- - [1) Scatter of **'friend_count'** vs **'age'** vs **'gender'**]
+ - [1) Third 'categorical' Variable]
+   - Scatter of **'friend_count'** vs **'age'** vs **'gender'**
    - Previously we noted that female users have more friends on average than male users. And, we might wonder, .... "Is this just because female users have a different "age" distribution ?" Or, maybe c.o.n.d.i.t.i.o.n.a.l. on age, the differences are actually larger. (gender vs friend_count)----- age?
 
 We want to add 'mean' on the boxplot ? `+ stat_summary(fun.y, geom, shape)`   
@@ -404,7 +405,7 @@ ggplot(aes(x = age, y = median_friend_count), data = pf.fc_by_age_gender) +
 ```
 <img src="https://user-images.githubusercontent.com/31917400/36160971-72509730-10da-11e8-8c33-03f6dcd7b8d8.jpg" /> 
 
- - [2) Thinking in Ratios - ]
+ - [2) Thinking in **Ratios for Categorical**]
    - It seems like the gender difference is largest for our young users. It would be to put this in relative terms though. So, let's answer a different question. "**How many times more friends**" does the average female user have than the male user? Maybe, females have twice as many friends as male users, or maybe it's ten times as many friends.....
    - We want to plot the **ratio of females to males** to determine how many times more friends the average female user has, compared to the number of friends the average male user has...Plot the ratio of the female to male median friend counts using the dataframe **'pf.fc_by_age_gender2'**.
 
@@ -419,8 +420,8 @@ library(reshape2)
 pf.fc_by_age_gender2 <- dcast(pf.fc_by_age_gender, age ~ gender, value.var = 'median_friend_count')
 head(pf.fc_by_age_gender2, 10)
 ```
- - Adding a baseline in the ratio plot
-   - `+ geom_hline(yintercept, linetype)`: A horizontal line to the plot with a y-intercept of 1, with the linetype of...
+ - Adding a baseline in the ratio plot 
+   - `+ geom_hline(yintercept, linetype)`: A horizontal line to the plot with a y-intercept of 1 (female = male), with the linetype of...
      - 0 = blank 
      - 1 = solid
      - 2 = dashed
@@ -434,7 +435,9 @@ ggplot(aes(x=age, y=female/male), data = pf.fc_by_age_gender2) + geom_line() +
 ```
 <img src="https://user-images.githubusercontent.com/31917400/36177967-59931ee0-110f-11e8-8d0e-246b5db097c7.jpg" /> 
 
-
+ - [3) Third 'Quantitative' Variable]
+   - Scatter of **'friend_count'** vs **'age'** vs **'tenure'**
+   - What if we looked at Age and Friend_Count over, say,(not gender? not categorical?) another numerical variable?
 
 
 
