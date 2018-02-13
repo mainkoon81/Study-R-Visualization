@@ -298,7 +298,7 @@ ggplot(aes(x=age, y=friend_count), data=pf) +
   geom_line(stat = 'summary', fun.y = quantile, fun.args=list(probs = 0.5), linetype=2, color='green') 
 #Green: 50% quantile("median")
 ```
- - We can zoom in. If we use `coord_cartesian(xlim = c(13, 90))` instead of `xlim()`and `coord_trans()`, we can zoom in. 
+ - We can zoom in, if we use `coord_cartesian(xlim = c(13, 90))` instead of `xlim()`and `scale_x_continuous(limits=c(n,n))`. 
 ```
 ggplot(aes(x=age, y=friend_count), data=pf) + 
   geom_point(alpha=1/20, position = position_jitter(h=0), color='orange') +
