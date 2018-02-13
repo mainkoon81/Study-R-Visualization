@@ -404,7 +404,9 @@ ggplot(aes(x = age, y = median_friend_count), data = pf.fc_by_age_gender) +
 ```
 <img src="https://user-images.githubusercontent.com/31917400/36160971-72509730-10da-11e8-8c33-03f6dcd7b8d8.jpg" /> 
 
-
+ - [2) Thinking in Ratios - ]
+   - It seems like the gender difference is largest for our young users. It would be to put this in relative terms though. So, let's answer a different question. "How many times more friends"" does the average female user have than the male user? Maybe, females have twice as many friends as male users, or maybe it's ten times as many friends.....
+   - We want to plot the ratio of females to males to determine how many times more friends the average female user has, compared to the number of friends the average male user has...Plot the ratio of the female to male median friend counts using the dataframe 'pf.fc_by_age_gender2'.
 
 
 
