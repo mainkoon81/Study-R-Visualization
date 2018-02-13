@@ -374,8 +374,15 @@ This gives us a correlation of 0.948. This is a strong positive correlation, and
  
  - [1) Scatter of **'friend_count'** vs **'age'** vs **'gender'**]
    - Previously we noted that female users have more friends on average than male users. And, we might wonder, .... "Is this just because female users have a different "age" distribution ?" Or, maybe c.o.n.d.i.t.i.o.n.a.l. on age, the differences are actually larger. (gender vs friend_count)----- age?
-   - 
-
+   - Want to add 'mean' on the boxplot ? `+ stat_summary(fun.y, geom, shape)`   
+```
+ggplot(aes(x=gender, y=age), data = subset(pf, !is.na(gender))) + geom_boxplot() + stat_summary(fun.y=mean, geom='point', shape=4)
+```
+   - Since male users are a bit younger, we might actually think a simple 'male-to-female comparison' doesn't capture their substantial differences in friend_count. Let's look at median_friend_count by age and gender instead.
+```
+ggplot(aes(x=age, y=friend_count), data = subset(pf, !is.na(gender))) + geom_line(aes(color=gender), stat = 'summary', fun.y=median)
+```
+<img src="https://user-images.githubusercontent.com/31917400/36158322-f713adba-10d3-11e8-8b01-cd5cf765a4fd.jpg" width="700" height="200" /> 
 
 
 
