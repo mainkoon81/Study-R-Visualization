@@ -265,7 +265,7 @@ install.packages('dplyr')
 library(dplyr)
 ```
  - want to group our data by the values of 'age'? Create a new dataset! 
- - create new dataset, using: `summarise(grouped_data, columns I want to create, the NO.of records in each group)`
+ - create new dataset, using: `summarise(grouped_data, columns we want to create, the NO.of records in each group)`
  - so...it creates a...pivot table...then sort out in an ascending order
 ```
 age_groups <- group_by(pf, age)
@@ -316,7 +316,8 @@ ggplot(aes(x=age, y=friend_count), data=pf) +
 
  - Correlation: 'age' and 'friend_count'..Let's see the strength of the relationship!
    - The `with()` function applys an expression to a dataset.
-   - The `by()` function applys a function to each level of a factor or factors(categorical variables).
+   - The `by()` function applys a function to each level of a factor or factors(few categories).
+   - the dplyr's `group_by()` + `summarise(group_by(), new-columns we want, n=n())` is for a dataset with so many categories. 
 ```
 cor.test(pf$age, pf$friend_count, method = 'pearson')
 with(pf, cor.test(pf$age, pf$friend_count, method = 'pearson'))
