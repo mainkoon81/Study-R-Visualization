@@ -263,7 +263,7 @@ install.packages('dplyr')
 library(dplyr)
 ```
  - want to group our data by the values of 'age'? Create a new dataset! 
- - create new dataset, using: `summarise(data, variable that i want to creat, the NO.of users in each group)`
+ - create new dataset, using: `summarise(grouped_data, columns I want to create, the NO.of records in each group)`
  - so...it creates a...pivot table...then sort out in an ascending order
 ```
 age_groups <- group_by(pf, age)
