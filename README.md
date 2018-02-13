@@ -381,7 +381,8 @@ ggplot(aes(x=gender, y=age), data = subset(pf, !is.na(gender))) + geom_boxplot()
 ```
 Since male users on avg are a bit younger, we might actually think a simple 'male-to-female comparison' doesn't capture their substantial differences in friend_count. Let's look at median_friend_count by age and gender instead. Then we can see that nearly everywhere the median friend count is larger for women than it is for men. `+ geom_line(stat, fun.y)`
 ```
-ggplot(aes(x=age, y=friend_count), data = subset(pf, !is.na(gender))) + geom_line(aes(color=gender), stat='summary', fun.y=median)
+ggplot(aes(x=age, y=friend_count), data = subset(pf, !is.na(gender))) + 
+  geom_line(aes(color=gender), stat='summary', fun.y=median)
 ```
 <img src="https://user-images.githubusercontent.com/31917400/36158322-f713adba-10d3-11e8-8b01-cd5cf765a4fd.jpg" width="700" height="200" /> 
 
