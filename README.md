@@ -387,7 +387,7 @@ ggplot(aes(x=age, y=friend_count), data = subset(pf, !is.na(gender))) +
 ```
 <img src="https://user-images.githubusercontent.com/31917400/36158322-f713adba-10d3-11e8-8b01-cd5cf765a4fd.jpg" width="700" height="200" /> 
 
-We write code to create a new dataframe, called 'pf.fc_by_age_gender', that contains information on each 'age' AND 'gender' group. The dataframe should contain the following variables:
+We write code to create a new dataframe, called **'pf.fc_by_age_gender'**, that contains information on each 'age' AND 'gender' group. The dataframe should contain the following variables:
  - mean_friend_count
  - median_friend_count
  - n (the number of users in each age and gender grouping)
@@ -405,8 +405,27 @@ ggplot(aes(x = age, y = median_friend_count), data = pf.fc_by_age_gender) +
 <img src="https://user-images.githubusercontent.com/31917400/36160971-72509730-10da-11e8-8c33-03f6dcd7b8d8.jpg" /> 
 
  - [2) Thinking in Ratios - ]
-   - It seems like the gender difference is largest for our young users. It would be to put this in relative terms though. So, let's answer a different question. "How many times more friends"" does the average female user have than the male user? Maybe, females have twice as many friends as male users, or maybe it's ten times as many friends.....
-   - We want to plot the ratio of females to males to determine how many times more friends the average female user has, compared to the number of friends the average male user has...Plot the ratio of the female to male median friend counts using the dataframe 'pf.fc_by_age_gender2'.
+   - It seems like the gender difference is largest for our young users. It would be to put this in relative terms though. So, let's answer a different question. "**How many times more friends**" does the average female user have than the male user? Maybe, females have twice as many friends as male users, or maybe it's ten times as many friends.....
+   - We want to plot the ratio of females to males to determine how many times more friends the average female user has, compared to the number of friends the average male user has...Plot the ratio of the female to male median friend counts using the dataframe **'pf.fc_by_age_gender2'**.
+
+# Create a new summary dataset !!
+>Notice how the variables that we grouped over -male and female-, have been repeated. We need to rearrange our data a little bit. Right now, our data is in 'long format'. We have many rows. What we need is 'wide format' with values of the 'median_friend_count' conditional on 'gender'.
+ - `dcast(data, keep ~ expand, key_value)`: **Reshaping** the dataset: We specify the dataset we are going to change and modify and then we put in a formula. Now, the first part of the formula (the left of the tilde sign), will list the variables I want to keep (age). On the right side of the tilde, we use the gender variable since we want male and female users to have **their own columns** for median friend count in the data frame. And finally, we set "value.var" because it holds the k.e.y m.e.a.s.u.r.e.m.e.n.t.s. or their values in our new dataframe.
+ - `melt()`: Converting the wide-format(expanded for human) back to the original long-format(shrunk for machine).
+```
+install.packages('reshape2')
+library(reshape2)
+
+pf.fc_by_age_gender2 <- dcast(pf.fc_by_age_gender, age ~ gender, value.var = 'median_friend_count')
+head(pf.fc_by_age_gender2, 10)
+```
+ - Ratio plot: 
+
+
+
+
+<img src="https://user-images.githubusercontent.com/31917400/36158322-f713adba-10d3-11e8-8b01-cd5cf765a4fd.jpg" width="700" height="200" /> 
+
 
 
 
