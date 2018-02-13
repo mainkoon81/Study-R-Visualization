@@ -374,19 +374,33 @@ This gives us a correlation of 0.948. This is a strong positive correlation, and
  
  - [1) Scatter of **'friend_count'** vs **'age'** vs **'gender'**]
    - Previously we noted that female users have more friends on average than male users. And, we might wonder, .... "Is this just because female users have a different "age" distribution ?" Or, maybe c.o.n.d.i.t.i.o.n.a.l. on age, the differences are actually larger. (gender vs friend_count)----- age?
-   - Want to add 'mean' on the boxplot ? `+ stat_summary(fun.y, geom, shape)`   
+
+We want to add 'mean' on the boxplot ? `+ stat_summary(fun.y, geom, shape)`   
 ```
 ggplot(aes(x=gender, y=age), data = subset(pf, !is.na(gender))) + geom_boxplot() + stat_summary(fun.y=mean, geom='point', shape=4)
 ```
-   - Since male users on avg are a bit younger, we might actually think a simple 'male-to-female comparison' doesn't capture their substantial differences in friend_count. Let's look at median_friend_count by age and gender instead.
+Since male users on avg are a bit younger, we might actually think a simple 'male-to-female comparison' doesn't capture their substantial differences in friend_count. Let's look at median_friend_count by age and gender instead. Then we can see that nearly everywhere the median friend count is larger for women than it is for men. `+ geom_line(stat, fun.y)`
 ```
-ggplot(aes(x=age, y=friend_count), data = subset(pf, !is.na(gender))) + geom_line(aes(color=gender), stat = 'summary', fun.y=median)
+ggplot(aes(x=age, y=friend_count), data = subset(pf, !is.na(gender))) + geom_line(aes(color=gender), stat='summary', fun.y=median)
 ```
 <img src="https://user-images.githubusercontent.com/31917400/36158322-f713adba-10d3-11e8-8b01-cd5cf765a4fd.jpg" width="700" height="200" /> 
 
-   - We can see that nearly everywhere the median friend count is larger for women than it is for men. 
+We write code to create a new dataframe, called 'pf.fc_by_age_gender', that contains information on each 'age' AND 'gender' group. The dataframe should contain the following variables:
+ - mean_friend_count
+ - median_friend_count
+ - n (the number of users in each age and gender grouping)
 
+then plot and shows the median friend count for each "gender" as "age" increases. Here, **the aes wrapper** deals with the variable with 'many categories', and **geom_line layer** deals with the variable with 'few categories'. It helps us understand how the difference between male and female users varies with age.
+```
+library(dplyr)
 
+age_gender <- group_by(subset(pf, !is.na(gender)), age, gender)
+pf.fc_by_age_gender <- summarise(age_gender, mean_friend_count=mean(friend_count), median_friend_count=median(friend_count), n=n()) 
+
+ggplot(aes(x = age, y = median_friend_count), data = pf.fc_by_age_gender) + 
+  geom_line(aes(color=gender), stat = 'summary', fun.y=median)
+```
+<img src="https://user-images.githubusercontent.com/31917400/36160971-72509730-10da-11e8-8c33-03f6dcd7b8d8.jpg" /> 
 
 
 
