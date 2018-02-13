@@ -275,13 +275,13 @@ head(pf_fcount_by_age, 50)
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35917431-05e374b0-0c06-11e8-84bd-f0af369197aa.jpg" />
 
- - Plot mean friend count vs. age using a line graph.
+ - Plot 'mean_friend_count' vs. 'age' using a line graph.
 ```
 ggplot(aes(x=age, y=f_count_mean), data=pf_fcount_by_age) + geom_line() 
 ```
 <img src="https://user-images.githubusercontent.com/31917400/35918378-7f84d554-0c09-11e8-868e-43284f1f84bf.jpg" />
 
->well..in older ages, our estimates are highly variable for friend_count_mean..in ages 30 to 60, the mean count is hovering about over 100...
+>well..in older ages, our estimates are highly variable for 'mean_friend_count'..in ages 30 to 60, the mean-count is hovering about over 100...
 
  - We can overlay our original scatter plot with the summary plots on its top. 
 ```
