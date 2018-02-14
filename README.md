@@ -545,13 +545,11 @@ ggplot(aes(x=price), data=yo) + geom_histogram(binwidth = 10, fill='red')
 
 <img src="https://user-images.githubusercontent.com/31917400/36229317-bec10a60-11ce-11e8-950a-5a8ad02d8f6a.jpg" />
 
- - Now that we know something about the price, let's figure out on a given purchase occasion how many ? yogurts' does a household purchase. To answer this we need to combine the 'counts of the different yogurt flavors' into one variable. For example, for the one particular household, on one purchase occasion, they bought three different types of yogurt. To figure this out for all the households, we need to make use of a new function.
-   - Create a new variable called all.purchases,which gives the total counts of yogurt for each observation or household.
-   - One way to do this is using the 'transform()' 
-   - The transform function produces a data frame so if you use it then save the result to 'yo'!
-   - OR you can figure out another way to create the variable.
+ - Now that we know something about the price, let's figure out on a given purchase occasion how many 'yogurts' does a household purchase. To answer this we need to combine the 'counts of the different yogurt flavors' into one variable. For example, for the one particular household, on one purchase occasion, they bought three different types of yogurt. To figure this out for all the households, we need to make use of a new function.
+   - Create a new variable called **'all.purchases'**, which gives the total counts of yogurt for each observation or household.
+   - One way to do this is using the `transform(data, defining new_variable)` 
+   - The transform function produces a dataframe so if you use it then save the result to 'yo'!
    - yo$all.purchase <- sum(yo[, 4:8]) #....doesn't work..
-   - transform(data, defining new_variable)
 ```
 yo <- transform(yo, all.purchase = strawberry+blueberry+pina.colada+plain+mixed.berry)
 summary(yo$all.purchase)
@@ -589,9 +587,9 @@ ggplot(aes(x=time, y=price), data = subset(yo, id %in% sample.ids)) +
          facet_wrap(~id) + 
          geom_line() + geom_point(aes(size = all.purchase), pch=1) 
 ```
-<img src="https://user-images.githubusercontent.com/31917400/36230305-eaa85888-11d1-11e8-9550-037bd0143794.jpg" /> 
+<img src="https://user-images.githubusercontent.com/31917400/36231168-f0a9b67a-11d4-11e8-9a95-2b10033247b4.jpg" /> 
 
- - From these plots, we can see the variation and how often each household buys yogurt. It seems that some household purchases more quantities than others with these larger circles indicating. For most of the households, the price of yogurt holds steady, or tends to increase over time. Now, there are, of course, some exceptions. We might think that the household is using coupons to drive the price down. Now, we don't have the coupon data to associate with this buying data, but you could see how that information could be paired to this data to better understand the consumer behavior. 
+ - From these plots above, we can see the variation and how often each household buys yogurt. It seems that some household purchases more quantities than others with these larger circles indicating. For most of the households, the price of yogurt holds steady, or tends to increase over time. Now, there are, of course, some exceptions. We might think that the household is using coupons to drive the price down. Now, we don't have the coupon data to associate with this buying data, but you could see how that information could be paired to this data to better understand the consumer behavior. 
 
 
 
