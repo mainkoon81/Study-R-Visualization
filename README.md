@@ -483,7 +483,7 @@ ggplot(aes(x=tenure, y=friendships_initiated), data = subset(pf, tenure>=1)) +
 ggplot(aes(x=tenure, y=friendships_initiated/tenure), data = subset(pf, tenure>=1)) +
   geom_line(aes(color=year_joined.bucket), stat = 'summary', fun.y=mean)
 ```
-<img src="https://user-images.githubusercontent.com/31917400/36225014-418d23ec-11c1-11e8-848b-1b07457065fb.jpg" />
+<img src="https://user-images.githubusercontent.com/31917400/36225178-bff17828-11c1-11e8-8371-87b534a5b989.jpg" />
 
 
 
