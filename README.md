@@ -4,6 +4,7 @@ __[R]__
  - I. Explore One Variable
  - II. Explore Two Variable 
  - III. Explore Multi-Variable
+ - IV. Wide vs Long
  
 http://hci.stanford.edu/publications/2013/invisibleaudience/invisibleaudience.pdf
 
@@ -511,7 +512,15 @@ ggplot(aes(x = tenure, y = friendships_initiated/tenure), data = subset(pf, tenu
 <img src="https://user-images.githubusercontent.com/31917400/36226064-af2334e8-11c4-11e8-804c-64725385a10e.jpg" />
 
 
+### Wide vs Long
+>Story: Throughout all of our analyses of the pseudo-Facebook user data set, we've come to learn a lot about our users. From their birthdays, to their friend counts, to their friendships initiated, we've really come to understand their behaviors and how they use the Facebook platform. But, now I think it's time for something completely different. In the next couple of segments, we'll look at another data set, and then **we'll return to this Facebook data set to draw some comparisons**. 
 
+We are going to work with a dataset **describing household purchases of five flavors of Dannon yogurt in the 8 ounce size**. Their price is recorded with each purchase occasion. This yogurt dataset has a quite different structure than our pseudo-Facebook dataset. 
+ - The synthetic Facebook data has one row per individual with that row giving their characteristics and counts of behaviors over a single period of time. (wide-format)
+ - On the other hand, the **yogurt data** has many rows per household, one for each purchase occasion. This kind of microdata is often useful for answering different types of questions than we've looked at so far. (long-format)
+
+ - [1) Histogram]
+   - 
 
 
 
