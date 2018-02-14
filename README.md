@@ -436,8 +436,18 @@ ggplot(aes(x=age, y=female/male), data = pf.fc_by_age_gender2) + geom_line() +
 <img src="https://user-images.githubusercontent.com/31917400/36177967-59931ee0-110f-11e8-8d0e-246b5db097c7.jpg" /> 
 
  - [3) Third 'Quantitative' Variable]
-   - Scatter of 'friend_count' vs 'age' vs **'tenure'**
-   - What if we looked at Age and Friend_Count over, say,(not gender? not categorical?) another numerical variable?
+   - Scatter of 'friend_count' vs 'age' vs 'gender' vs **'tenure'**
+   - What if we looked at 'friend_count', 'age' and 'gender'(categorical) over another **numerical** variable?
+   - For example, since users are likely to accumulate friends over time using FB, Facebook'tenure' is important for predicting friend_count. Tenure or how many days since registering with Facebook is associated with age as well. 
+   - We create a new variable called **'year_joined'** in our dataframe. This variable is going to hold the year that our users first joined FB(using the variable 'tenure' and 2014 as the reference year). 
+   - 'tenure' is measured in days, but we want to convert it to years.
+     - `floor()` to round down to the nearest integer. 
+     - `ceiling()` to round up to the nearest integer.
+```
+pf$year_joined <-  floor(2014 - pf$tenure/365)
+```
+ - Cut a variable and make it **categorical**.
+ 
 
 
 
