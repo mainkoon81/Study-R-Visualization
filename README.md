@@ -475,7 +475,9 @@ ggplot(aes(x=age, y=friend_count), data = subset(pf, !is.na(year_joined.bucket))
 ```
 <img src="https://user-images.githubusercontent.com/31917400/36211466-33418d96-1199-11e8-9afb-f0b89cdc6ed4.jpg" />
 
->We've seen that users who have been on the site longer, typically have higher friend counts across ages. Now, this leaves me wondering if friend requests are the same or different across groups. Do 'new users' go on friending sprees? Or do 'users with more tenure' initiate more friendships?
+>We've seen that users who have been on the site longer, typically have higher friend counts across ages. Now, this leaves me wondering if friend requests are the same or different across groups. Do 'new users' go on friending sprees? Or do 'users with more tenure' initiate more friendships? Since the general pattern continues to hold after conditioning on each of the 'buckets of year joined', we might increase our confidence that this observation isn't just an artifact of the time that users have had to accumulate friends. 
+ - Need to subset the data to only consider user with at least one day of tenure.
+ - we could see how many friendships does a user initiate for **each day** since they've started using the service. 
 ```
 ggplot(aes(x=tenure, y=friendships_initiated), data = subset(pf, tenure>=1)) +
   geom_line(aes(color=year_joined.bucket), stat = 'summary', fun.y=mean)
@@ -485,8 +487,21 @@ ggplot(aes(x=tenure, y=friendships_initiated/tenure), data = subset(pf, tenure>=
 ```
 <img src="https://user-images.githubusercontent.com/31917400/36225178-bff17828-11c1-11e8-8371-87b534a5b989.jpg" />
 
+>Bias-Variance Tradeoff
+ - As the bin size increases we see less noise on the plot!!!
+ - Adjust the noise by bending our x-axis differently.
+ - Binning values by the denominator in the round function and then transforming back to the natural scale with the constant in front.
+```
+ggplot(aes(x = 7 * round(tenure / 7), y = friendships_initiated/tenure), data = subset(pf, tenure > 0)) +
+  geom_line(aes(color = year_joined.bucket), stat = "summary", fun.y = mean) 
 
+ggplot(aes(x = 30 * round(tenure / 30), y = friendships_initiated/tenure), data = subset(pf, tenure > 0)) +
+  geom_line(aes(color = year_joined.bucket), stat = "summary", fun.y = mean)
 
+ggplot(aes(x = 90 * round(tenure / 90), y = friendships_initiated/tenure), data = subset(pf, tenure > 0)) +
+  geom_line(aes(color = year_joined.bucket), stat = "summary", fun.y = mean) 
+```
+<img src="https://user-images.githubusercontent.com/31917400/36225818-ca9f528e-11c3-11e8-874c-47528562310a.jpg" />
 
 
 
