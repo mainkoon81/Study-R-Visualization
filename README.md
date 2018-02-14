@@ -512,7 +512,7 @@ ggplot(aes(x = tenure, y = friendships_initiated/tenure), data = subset(pf, tenu
 <img src="https://user-images.githubusercontent.com/31917400/36226064-af2334e8-11c4-11e8-804c-64725385a10e.jpg" />
 
 
-### Wide vs Long
+### IV. Wide vs Long
 >Story: Throughout all of our analyses of the pseudo-Facebook user data set, we've come to learn a lot about our users. From their birthdays, to their friend counts, to their friendships initiated, we've really come to understand their behaviors and how they use the Facebook platform. But, now I think it's time for something completely different. In the next couple of segments, we'll look at another data set, and then **we'll return to this Facebook data set to draw some comparisons**. 
 
 >Data: The citation for the original paper on the yogurt data set is Kim, Jaehwan, Greg M. Allenby, and Peter E. Rossi. "Modeling consumer demand for variety." Marketing Science 21.3 (2002): 229-250.
