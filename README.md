@@ -529,8 +529,8 @@ yo$id <- factor(yo$id)
 ```
 <img src="https://user-images.githubusercontent.com/31917400/36228666-b9107e2c-11cc-11e8-9bba-fe7381273805.jpg" />
 
- - [1) Histogram]
-   - We can immediately notice some important discreetness to the distribution below. There appear to be prices at which there are many observations, but then no observations in adjacent prices. This makes sense if prices are set in a way that applies to many of the consumers. There are some purchases that involve much lower prices, and if we are interested in price sensitivity, we definitely want to consider what sort of variations is in these prices. Now, I also want you to note that **if we chose a different bin width**, we might obscure this discreetness.
+ - [1) Histogram & Discreteness]
+   - We can immediately notice some important discreetness to the distribution below. There appear to be prices at which there are many observations, but then no observations in adjacent prices. This makes sense if prices are set in a way that applies to many of the consumers. There are some purchases that involve much lower prices, and if we are interested in price sensitivity, we definitely want to consider what sort of variations is in these prices. Now, I also want you to note that **if we chose a different bin width**, we might obscure this discreteness.
    - Say if I chose a bandwidth equal to ten. In this histogram, we would miss the observation for some of the empty spaces for the adjacent prices. So, it's no surprise that for this very discreet data this histogram is a very biased model. 
 ```
 ggplot(aes(x=price), data=yo) + geom_histogram(color='red')
@@ -538,7 +538,21 @@ ggplot(aes(x=price), data=yo) + geom_histogram(binwidth = 10, fill='red')
 ```
 <img src="https://user-images.githubusercontent.com/31917400/36228973-a899bc60-11cd-11e8-8507-aa178e3cf0d0.jpg" />
 
-   
+ - How to detect the discreteness? 
+   - `summary()`: if we just look at a five number summary of the data, we might not notice this so easily. One clue to the discreteness is that the 75th percentile is the same as the maximum.
+   - `unique()`: We could also see this discreteness by looking at how many distinct prices there are in the data set.
+   - `table()`: Tabling the variable we get an idea of the distribution like we saw in the histogram.
+```
+summary(yo$price)
+unique(yo$price)
+length(unique(yo$price))
+table(yo$price)
+```
+<img src="https://user-images.githubusercontent.com/31917400/36229317-bec10a60-11ce-11e8-950a-5a8ad02d8f6a.jpg" />
+
+
+
+ 
    
 
 
