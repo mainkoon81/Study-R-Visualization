@@ -381,7 +381,7 @@ We want to add 'mean' on the boxplot ? `+ stat_summary(fun.y, geom, shape)`
 ggplot(aes(x=gender, y=age), data = subset(pf, !is.na(gender))) + 
   geom_boxplot() + stat_summary(fun.y=mean, geom='point', shape=4)
 ```
-Since male users on avg are a bit younger, we might actually think a simple 'male-to-female comparison' doesn't capture their substantial differences in friend_count. Let's look at median_friend_count by age and gender instead. Then we can see that nearly everywhere the median friend count is larger for women than it is for men. `+ geom_line(stat, fun.y)`
+Since male users on avg are a bit younger, we might actually think a simple 'male-to-female comparison' doesn't capture their substantial differences in friend_count. Let's look at median_friend_count by age and gender instead. Then we can see that nearly everywhere the median friend count is larger for women than it is for men. `+ geom_line(aes(color), stat, fun.y)`
 ```
 ggplot(aes(x=age, y=friend_count), data = subset(pf, !is.na(gender))) + 
   geom_line(aes(color=gender), stat='summary', fun.y=median)
@@ -464,12 +464,14 @@ table(pf$year_joined.bucket, useNA = 'ifany')
 ggplot(aes(x=age, y=friend_count), data = subset(pf, !is.na(year_joined.bucket))) + 
   geom_line(aes(color=year_joined.bucket), stat = 'summary', fun.y=median)
 ```
-<img src="https://user-images.githubusercontent.com/31917400/36209952-17c6eb64-1195-11e8-8909-607b9f27ec34.jpg" width="600" height="200" />
-
- - Grand Mean
- 
-
-
+ - Grand-Mean
+   - In this plot, we can see that our suspicion is confirmed. Users with a longer tenure tend to have higher friend counts, with the exception of our older users, say, about 80 and up. To put these cohort-specific-medians in perspective, we can change them to cohort- specific-means. And then plot the grand-mean down as well - `geom_line(stat, fun.y, linetype)`
+```
+ggplot(aes(x=age, y=friend_count), data = subset(pf, !is.na(year_joined.bucket))) + 
+  geom_line(aes(color=year_joined.bucket), stat = 'summary', fun.y=mean) + 
+  geom_line(stat = 'summary', fun.y=mean, linetype=2, alpha=0.8)
+```
+<img src="https://user-images.githubusercontent.com/31917400/36211323-d8077878-1198-11e8-941e-d861f6e4bf02.jpg" />
 
 
 
