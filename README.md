@@ -545,7 +545,22 @@ ggplot(aes(x=price), data=yo) + geom_histogram(binwidth = 10, fill='red')
 
 <img src="https://user-images.githubusercontent.com/31917400/36229317-bec10a60-11ce-11e8-950a-5a8ad02d8f6a.jpg" />
 
- - This histogram reveals that most households buy one or two yogurts at a time. To dive deeper into our **yogurt prices** and **household behavior**, let's investigate the **price over time** in more detail.  In this dataset, we can examine changes in prices because **we have data on the same households over time**. The visualization should be a scatter plot of **price** vs **time** (time series plot). 
+ - Now that we know something about the price, let's figure out on a given purchase occasion how many ? yogurts' does a household purchase. To answer this we need to combine the 'counts of the different yogurt flavors' into one variable. For example, for the one particular household, on one purchase occasion, they bought three different types of yogurt. To figure this out for all the households, we need to make use of a new function.
+   - Create a new variable called all.purchases,which gives the total counts of yogurt for each observation or household.
+   - One way to do this is using the 'transform()' 
+   - The transform function produces a data frame so if you use it then save the result to 'yo'!
+   - OR you can figure out another way to create the variable.
+   - yo$all.purchase <- sum(yo[, 4:8]) #....doesn't work..
+   - transform(data, defining new_variable)
+```
+yo <- transform(yo, all.purchase = strawberry+blueberry+pina.colada+plain+mixed.berry)
+summary(yo$all.purchase)
+
+ggplot(aes(x=all.purchase), data=yo) + geom_histogram(color='red', binwidth = 1, fill='yellow')
+```
+<img src="https://user-images.githubusercontent.com/31917400/36231044-8fd1c770-11d4-11e8-8835-e283bb449694.jpg" />
+
+ - The histogram above reveals that most households buy one or two yogurts at a time. To dive deeper into our **yogurt prices** and **household behavior**, let's investigate the **price over time** in more detail.  In this dataset, we can examine changes in prices because **we have data on the same households over time**. The visualization should be a scatter plot of **price** vs **time** (time series plot). 
  - Looking at the plot, we can see that the mode or the most common prices, seem to be increasing over time. We also see some lower price points scattered about the graph. These may be due to sales or, perhaps, buyers using coupons that bring down the price of yogurt..
 ```
 ggplot(aes(x=time, y=price), data = yo) + geom_point(alpha=0.3, color='red')
@@ -563,7 +578,21 @@ ggplot(aes(x=time, y=price), data = yo) + geom_jitter(alpha=0.2, shape=21, fill=
      - what prices they're buying yogurt at. 
    - One way to do this is to look at some **sub-sample** in more detail. Let's pick **16 households** at random and take a closer look.
    - 'id' is a factor, otherwise, level() doesnt work. `level()` specify each category in the variable announced as a factor.
+   - "x %in% y"" returns a logical (boolean) vector the same length as x that says whether each entry in x appears in y. That is, for each entry in x, it checks to see whether it is in y. This allows us to subset the data so we get all the purchases occasions for the households in the sample. Then, we create scatterplots of price vs. time and facet by the sample id. 
+   - `subset(yo, id %in% sample.ids)`: data is..with 'id'..that only present in 'sample.ids'
+   - `facet_wrap(~id)`: ~ variable name' that we want to split the data over..so categorical variable
+   - Use the 'pch' or 'shape' parameter to specify the symbol point...
 <img src="https://user-images.githubusercontent.com/31917400/36230305-eaa85888-11d1-11e8-9550-037bd0143794.jpg" /> 
+
+```
+ggplot(aes(x=time, y=price), data = subset(yo, id %in% sample.ids)) + 
+         facet_wrap(~id) + 
+         geom_line() + geom_point(aes(size = all.purchase), pch=1) 
+```
+<img src="https://user-images.githubusercontent.com/31917400/36230305-eaa85888-11d1-11e8-9550-037bd0143794.jpg" /> 
+
+ - From these plots, we can see the variation and how often each household buys yogurt. It seems that some household purchases more quantities than others with these larger circles indicating. For most of the households, the price of yogurt holds steady, or tends to increase over time. Now, there are, of course, some exceptions. We might think that the household is using coupons to drive the price down. Now, we don't have the coupon data to associate with this buying data, but you could see how that information could be paired to this data to better understand the consumer behavior. 
+
 
 
    
