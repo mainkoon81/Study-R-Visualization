@@ -471,7 +471,7 @@ ggplot(aes(x=age, y=friend_count), data = subset(pf, !is.na(year_joined.bucket))
   geom_line(aes(color=year_joined.bucket), stat = 'summary', fun.y=mean) + 
   geom_line(stat = 'summary', fun.y=mean, linetype=2, alpha=0.8)
 ```
-<img src="https://user-images.githubusercontent.com/31917400/36211323-d8077878-1198-11e8-941e-d861f6e4bf02.jpg" />
+<img src="https://user-images.githubusercontent.com/31917400/36211466-33418d96-1199-11e8-9afb-f0b89cdc6ed4.jpg" />
 
 
 
