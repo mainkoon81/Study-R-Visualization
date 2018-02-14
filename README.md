@@ -56,7 +56,7 @@ ggplot(data = pf, aes(x = dob_day)) + geom_histogram(binwidth = 1) + scale_x_con
    - then ommiting NA values..it sould be dealt within the 'data' level: `data=subset(pf, !is.na(gender))`
    - IF the relationship include ****categorical variable**** (such as 'gender'), then
      - Find STATISTICS ? 
-       - by the categorical variable, what we want is 'total count of records' : `table(categorical_variable)`
+       - by the categorical variable, what we want is 'total count of records' and see the distribution in each group.: `table(categorical_variable, useNA = 'ifany')`
        - by the categorical variable, what we want is 'other function' : `by(target_variable, categorical_variable, function)`
      
 ```
@@ -450,14 +450,21 @@ pf$year_joined <-  floor(2014 - pf$tenure/365)
 
  - Cut a variable and make it **categorical**.
  - `cut()` converts Numeric(or Continuous) to Factor, breaking up a continuous variable(such as age) into a categorical variable.
- - We create a new variable in the dataframe called 'year_joined.bucket' accommodating the following buckets:
+ - We create a new variable in the dataframe called **'year_joined.bucket'** offering the following buckets:
    - (2004, 2009]
    - (2009, 2011]
    - (2011, 2012]
    - (2012, 2014]
+ - We have four bins of users, depending on when they joined Facebook, and it looks like two people have a value of NA. Let's use this **'year_joined.bucket'** variable to create a line graph of 'friend_count' vs 'age' so that each 'bucket' is a line tracking the **median friend_count** across 'age'(four different lines on our plot).
 ```
 pf$year_joined.bucket <- cut(pf$year_joined, breaks = c(2004,2009,2011,2012,2014)) 
+
+table(pf$year_joined.bucket, useNA = 'ifany')
+
+ggplot(aes(x=age, y=friend_count), data = subset(pf, !is.na(year_joined.bucket))) + 
+  geom_line(aes(color=year_joined.bucket), stat = 'summary', fun.y=median)
 ```
+<img src="https://user-images.githubusercontent.com/31917400/36209952-17c6eb64-1195-11e8-8909-607b9f27ec34.jpg" width="600" height="200" />
 
 
 
