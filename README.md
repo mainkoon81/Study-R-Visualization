@@ -542,12 +542,7 @@ ggplot(aes(x=price), data=yo) + geom_histogram(binwidth = 10, fill='red')
    - `summary()`: if we just look at a five number summary of the data, we might not notice this so easily. One clue to the discreteness is that the 75th percentile is the same as the maximum.
    - `unique()`: We could also see this discreteness by looking at how many distinct prices there are in the data set.
    - `table()`: Tabling the variable we get an idea of the distribution like we saw in the histogram.
-```
-summary(yo$price)
-unique(yo$price)
-length(unique(yo$price))
-table(yo$price)
-```
+
 <img src="https://user-images.githubusercontent.com/31917400/36229317-bec10a60-11ce-11e8-950a-5a8ad02d8f6a.jpg" />
 
 
