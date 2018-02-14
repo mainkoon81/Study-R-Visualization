@@ -487,10 +487,10 @@ ggplot(aes(x=tenure, y=friendships_initiated/tenure), data = subset(pf, tenure>=
 ```
 <img src="https://user-images.githubusercontent.com/31917400/36225178-bff17828-11c1-11e8-8371-87b534a5b989.jpg" />
 
->Bias-Variance Tradeoff
- - As the bin size increases we see less noise on the plot!!!
- - Adjust the noise by bending our x-axis differently.
- - Binning values by the denominator in the round function and then transforming back to the natural scale with the constant in front.
+ - Bias-Variance Tradeoff
+   - As the bin size increases we see less noise on the plot!!!
+   - Adjust the noise by bending our x-axis differently.
+   - Binning values by the denominator in the round function and then transforming back to the natural scale with the constant in front.
 ```
 ggplot(aes(x = 7 * round(tenure / 7), y = friendships_initiated/tenure), data = subset(pf, tenure > 0)) +
   geom_line(aes(color = year_joined.bucket), stat = "summary", fun.y = mean) 
@@ -502,6 +502,13 @@ ggplot(aes(x = 90 * round(tenure / 90), y = friendships_initiated/tenure), data 
   geom_line(aes(color = year_joined.bucket), stat = "summary", fun.y = mean) 
 ```
 <img src="https://user-images.githubusercontent.com/31917400/36225818-ca9f528e-11c3-11e8-874c-47528562310a.jpg" />
+
+ - Natural Smoothing w/o bin control ? `+ geom_smooth(aes(color))`  but weird...what about mean function????
+```
+ggplot(aes(x = tenure, y = friendships_initiated/tenure), data = subset(pf, tenure >= 1)) +
+  geom_smooth(aes(color = year_joined.bucket))
+```
+<img src="https://user-images.githubusercontent.com/31917400/36226064-af2334e8-11c4-11e8-804c-64725385a10e.jpg" />
 
 
 
