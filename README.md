@@ -465,7 +465,7 @@ ggplot(aes(x=age, y=friend_count), data = subset(pf, !is.na(year_joined.bucket))
   geom_line(aes(color=year_joined.bucket), stat = 'summary', fun.y=median)
 ```
  - Grand-Mean
-   - In this plot, we can see that our suspicion is confirmed. Users with a longer tenure tend to have higher friend counts, with the exception of our older users, say, about 80 and up. To put these cohort-specific-medians in perspective, we can change them to cohort- specific-means. And then plot the grand-mean down as well - `geom_line(stat, fun.y, linetype)`
+   - In this plot, we can see that our suspicion is confirmed. Users with a longer tenure(red line) tend to have higher friend counts, with the exception of our older users, say, about 80 and up. To put these **cohort-specific-medians** in perspective, we can change them to **cohort-specific-means**. And then plot the grand-mean down as well - `geom_line(stat, fun.y, linetype)`
 ```
 ggplot(aes(x=age, y=friend_count), data = subset(pf, !is.na(year_joined.bucket))) + 
   geom_line(aes(color=year_joined.bucket), stat = 'summary', fun.y=mean) + 
