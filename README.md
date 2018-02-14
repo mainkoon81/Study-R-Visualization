@@ -455,7 +455,9 @@ pf$year_joined <-  floor(2014 - pf$tenure/365)
    - (2009, 2011]
    - (2011, 2012]
    - (2012, 2014]
- - We have four bins of users, depending on when they joined Facebook, and it looks like two people have a value of NA. Let's use this **'year_joined.bucket'** variable to create a line graph of 'friend_count' vs 'age' so that each 'bucket' is a line tracking the **median friend_count** across 'age'(four different lines on our plot)...`+ geom_line(aes(color), stat='summary', fun.y)`
+ - Median 
+   - We have four bins of users, depending on when they joined Facebook, and it looks like two people have a value of NA. 
+   - Let's use this **'year_joined.bucket'** variable to create a line graph of 'friend_count' vs 'age' so that each 'bucket' is a line tracking the **median friend_count** across 'age'(four different lines on our plot)...`+ geom_line(aes(color), stat='summary', fun.y)`
 ```
 pf$year_joined.bucket <- cut(pf$year_joined, breaks = c(2004,2009,2011,2012,2014)) 
 
