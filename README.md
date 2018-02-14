@@ -545,8 +545,25 @@ ggplot(aes(x=price), data=yo) + geom_histogram(binwidth = 10, fill='red')
 
 <img src="https://user-images.githubusercontent.com/31917400/36229317-bec10a60-11ce-11e8-950a-5a8ad02d8f6a.jpg" />
 
+ - This histogram reveals that most households buy one or two yogurts at a time. To dive deeper into our **yogurt prices** and **household behavior**, let's investigate the **price over time** in more detail.  In this dataset, we can examine changes in prices because **we have data on the same households over time**. The visualization should be a scatter plot of **price** vs **time** (time series plot). 
+ - Looking at the plot, we can see that the mode or the most common prices, seem to be increasing over time. We also see some lower price points scattered about the graph. These may be due to sales or, perhaps, buyers using coupons that bring down the price of yogurt..
+```
+ggplot(aes(x=time, y=price), data = yo) + geom_point(alpha=0.3, color='red')
+ggplot(aes(x=time, y=price), data = yo) + geom_jitter(alpha=0.2, shape=21, fill='yellow')
+```
+<img src="https://user-images.githubusercontent.com/31917400/36229637-d3feef22-11cf-11e8-8cff-7566f712ecf0.jpg" width="700" height="200" /> 
 
-
+ - [2) Sampling Observations]
+   - Can you see the **scattered time series** data? How to proceed differently with this type of a data set?
+   - When familiarizing yourself with a new data set that contains **multiple observations of the same units (over time?)**, it's often useful to work with a **sample** of those units so that it's easy to display the raw data for that sample. 
+   - In the case of the yogurt data set, we might want to look at a small sample of households in more detail so that we know what kind of within and between household variation we are working with. 
+   - This analysis of a **sub-sample** might come before trying to use within household variation as part of a model. For example, this data set was originally used to model consumer preferences for variety. But, before doing that, we'd want to look at 
+     - how often we observe households buying yogurt 
+     - how often they buy multiple items
+     - what prices they're buying yogurt at. 
+   - One way to do this is to look at some **sub-sample** in more detail. Let's pick **16 households** at random and take a closer look.
+   - 'id' is a factor, otherwise, level() doesnt work. `level()` specify each category in the variable announced as a factor.
+<img src="https://user-images.githubusercontent.com/31917400/36230253-bbed8fc2-11d1-11e8-9028-188df75dfd14.jpg" /> 
  
    
 
