@@ -520,9 +520,6 @@ ggplot(aes(x = tenure, y = friendships_initiated/tenure), data = subset(pf, tenu
 We are going to work with a dataset **describing household purchases of five flavors of Dannon yogurt in the 8 ounce size**. Their price is recorded with each purchase occasion. This yogurt dataset has a quite different structure than our pseudo-Facebook dataset. 
  - The synthetic Facebook data has one row per individual with that row giving their characteristics and counts of behaviors over a single period of time. (wide-format)
  - On the other hand, the **yogurt data** has many rows per household, one for each purchase occasion. This kind of microdata is often useful for answering different types of questions than we've looked at so far. (long-format)
-
- - [1) Histogram]
-   - 
 ```
 yo <- read.csv('C:/Users/Minkun/Desktop/classes_1/NanoDeg/1.Data_AN/L7/---New R/data/yogurt.csv')
 head(yo, 5)
@@ -532,7 +529,17 @@ yo$id <- factor(yo$id)
 ```
 <img src="https://user-images.githubusercontent.com/31917400/36228666-b9107e2c-11cc-11e8-9bba-fe7381273805.jpg" />
 
+ - [1) Histogram]
+   - We can immediately notice some important discreetness to the distribution below. There appear to be prices at which there are many observations, but then no observations in adjacent prices. This makes sense if prices are set in a way that applies to many of the consumers. There are some purchases that involve much lower prices, and if we are interested in price sensitivity, we definitely want to consider what sort of variations is in these prices. Now, I also want you to note that **if we chose a different bin width**, we might obscure this discreetness.
+   - Say if I chose a bandwidth equal to ten. In this histogram, we would miss the observation for some of the empty spaces for the adjacent prices. So, it's no surprise that for this very discreet data this histogram is a very biased model. 
+```
+ggplot(aes(x=price), data=yo) + geom_histogram(color='red')
+ggplot(aes(x=price), data=yo) + geom_histogram(binwidth = 10, fill='red')
+```
+<img src="https://user-images.githubusercontent.com/31917400/36228973-a899bc60-11cd-11e8-8507-aa178e3cf0d0.jpg" />
 
+   
+   
 
 
 
