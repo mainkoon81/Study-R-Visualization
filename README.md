@@ -475,7 +475,15 @@ ggplot(aes(x=age, y=friend_count), data = subset(pf, !is.na(year_joined.bucket))
 ```
 <img src="https://user-images.githubusercontent.com/31917400/36211466-33418d96-1199-11e8-9afb-f0b89cdc6ed4.jpg" />
 
+>We've seen that users who have been on the site longer, typically have higher friend counts across ages. Now, this leaves me wondering if friend requests are the same or different across groups. Do 'new users' go on friending sprees? Or do 'users with more tenure' initiate more friendships?
+```
+ggplot(aes(x=tenure, y=friendships_initiated), data = subset(pf, tenure>=1)) +
+  geom_line(aes(color=year_joined.bucket), stat = 'summary', fun.y=mean)
 
+ggplot(aes(x=tenure, y=friendships_initiated/tenure), data = subset(pf, tenure>=1)) +
+  geom_line(aes(color=year_joined.bucket), stat = 'summary', fun.y=mean)
+```
+<img src="https://user-images.githubusercontent.com/31917400/36225014-418d23ec-11c1-11e8-848b-1b07457065fb.jpg" />
 
 
 
