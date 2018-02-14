@@ -449,7 +449,7 @@ pf$year_joined <-  floor(2014 - pf$tenure/365)
 <img src="https://user-images.githubusercontent.com/31917400/36208607-5a7837f0-1191-11e8-9dd4-aba4a89990eb.jpg" /> 
 
  - Cut a variable and make it **categorical**.
- - `cut()` converts Numeric(or Continuous) to Factor, breaking up a continuous variable(such as age) into a categorical variable.
+ - `cut(variable, breaks=c(n,n))` converts Numeric(or Continuous) to Factor, breaking up a continuous variable(such as age) into a categorical variable.
  - We create a new variable in the dataframe called **'year_joined.bucket'** offering the following buckets:
    - (2004, 2009]
    - (2009, 2011]
