@@ -515,12 +515,23 @@ ggplot(aes(x = tenure, y = friendships_initiated/tenure), data = subset(pf, tenu
 ### Wide vs Long
 >Story: Throughout all of our analyses of the pseudo-Facebook user data set, we've come to learn a lot about our users. From their birthdays, to their friend counts, to their friendships initiated, we've really come to understand their behaviors and how they use the Facebook platform. But, now I think it's time for something completely different. In the next couple of segments, we'll look at another data set, and then **we'll return to this Facebook data set to draw some comparisons**. 
 
+>Data: The citation for the original paper on the yogurt data set is Kim, Jaehwan, Greg M. Allenby, and Peter E. Rossi. "Modeling consumer demand for variety." Marketing Science 21.3 (2002): 229-250.
+
 We are going to work with a dataset **describing household purchases of five flavors of Dannon yogurt in the 8 ounce size**. Their price is recorded with each purchase occasion. This yogurt dataset has a quite different structure than our pseudo-Facebook dataset. 
  - The synthetic Facebook data has one row per individual with that row giving their characteristics and counts of behaviors over a single period of time. (wide-format)
  - On the other hand, the **yogurt data** has many rows per household, one for each purchase occasion. This kind of microdata is often useful for answering different types of questions than we've looked at so far. (long-format)
 
  - [1) Histogram]
    - 
+```
+yo <- read.csv('C:/Users/Minkun/Desktop/classes_1/NanoDeg/1.Data_AN/L7/---New R/data/yogurt.csv')
+head(yo, 5)
+str(yo)
+
+yo$id <- factor(yo$id)
+```
+<img src="https://user-images.githubusercontent.com/31917400/36228666-b9107e2c-11cc-11e8-9bba-fe7381273805.jpg" />
+
 
 
 
