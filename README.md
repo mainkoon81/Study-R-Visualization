@@ -563,8 +563,9 @@ ggplot(aes(x=time, y=price), data = yo) + geom_jitter(alpha=0.2, shape=21, fill=
      - what prices they're buying yogurt at. 
    - One way to do this is to look at some **sub-sample** in more detail. Let's pick **16 households** at random and take a closer look.
    - 'id' is a factor, otherwise, level() doesnt work. `level()` specify each category in the variable announced as a factor.
-<img src="https://user-images.githubusercontent.com/31917400/36230253-bbed8fc2-11d1-11e8-9028-188df75dfd14.jpg" /> 
- 
+<img src="https://user-images.githubusercontent.com/31917400/36230305-eaa85888-11d1-11e8-9550-037bd0143794.jpg" /> 
+
+
    
 
 
