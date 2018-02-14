@@ -503,7 +503,7 @@ ggplot(aes(x = 90 * round(tenure / 90), y = friendships_initiated/tenure), data 
 ```
 <img src="https://user-images.githubusercontent.com/31917400/36225818-ca9f528e-11c3-11e8-874c-47528562310a.jpg" />
 
- - Natural Smoothing w/o bin control ? `+ geom_smooth(aes(color))`  but weird...what about mean function????
+ - Natural Smoothing w/o bin control ? `+ geom_smooth(aes(color))`  but weird...what about mean function???? What about geom_line()???
 ```
 ggplot(aes(x = tenure, y = friendships_initiated/tenure), data = subset(pf, tenure >= 1)) +
   geom_smooth(aes(color = year_joined.bucket))
