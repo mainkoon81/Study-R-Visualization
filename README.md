@@ -373,7 +373,7 @@ This gives us a correlation of 0.948. This is a strong positive correlation, and
 <img src="https://user-images.githubusercontent.com/31917400/35946556-2fda77ae-0c5c-11e8-9d0c-302632b73627.jpg" width="600" height="200" /> 
  
  - [1) Third 'categorical' Variable]
-   - Scatter of **'friend_count'** vs **'age'** vs **'gender'**
+   - Scatter of 'friend_count' vs 'age' vs **'gender'**
    - Previously we noted that female users have more friends on average than male users. And, we might wonder, .... "Is this just because female users have a different "age" distribution ?" Or, maybe c.o.n.d.i.t.i.o.n.a.l. on age, the differences are actually larger. (gender vs friend_count)----- age?
 
 We want to add 'mean' on the boxplot ? `+ stat_summary(fun.y, geom, shape)`   
@@ -436,7 +436,7 @@ ggplot(aes(x=age, y=female/male), data = pf.fc_by_age_gender2) + geom_line() +
 <img src="https://user-images.githubusercontent.com/31917400/36177967-59931ee0-110f-11e8-8d0e-246b5db097c7.jpg" /> 
 
  - [3) Third 'Quantitative' Variable]
-   - Scatter of **'friend_count'** vs **'age'** vs **'tenure'**
+   - Scatter of 'friend_count' vs 'age' vs **'tenure'**
    - What if we looked at Age and Friend_Count over, say,(not gender? not categorical?) another numerical variable?
 
 
