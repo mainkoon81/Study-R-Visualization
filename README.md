@@ -54,7 +54,7 @@ ggplot(data = pf, aes(x = dob_day)) + geom_histogram(binwidth = 1) + scale_x_con
    - Outliers? then 'Limiting axis': `+ scale_x_continuous(limits = c(n, n), breaks)`
    - Faceting by 'gender': `+ facet_wrap( ~ gender)` or '+ facet_grid(gender ~ .)' 
    - then ommiting NA values..it sould be dealt within the 'data' level: `data=subset(pf, !is.na(gender))`
-   - IF the relationship include ****categorical variable**** (such as 'gender'), 
+   - IF the relationship include ****categorical variable**** (such as 'gender'), then
      - Find STATISTICS ? 
        - by the categorical variable, what we want is 'total count of records' : `table(categorical_variable)`
        - by the categorical variable, what we want is 'other function' : `by(target_variable, categorical_variable, function)`
@@ -446,8 +446,19 @@ ggplot(aes(x=age, y=female/male), data = pf.fc_by_age_gender2) + geom_line() +
 ```
 pf$year_joined <-  floor(2014 - pf$tenure/365)
 ```
+<img src="https://user-images.githubusercontent.com/31917400/36208607-5a7837f0-1191-11e8-9dd4-aba4a89990eb.jpg" /> 
+
  - Cut a variable and make it **categorical**.
- 
+ - `cut()` converts Numeric(or Continuous) to Factor, breaking up a continuous variable(such as age) into a categorical variable.
+ - We create a new variable in the dataframe called 'year_joined.bucket' accommodating the following buckets:
+   - (2004, 2009]
+   - (2009, 2011]
+   - (2011, 2012]
+   - (2012, 2014]
+```
+pf$year_joined.bucket <- cut(pf$year_joined, breaks = c(2004,2009,2011,2012,2014)) 
+```
+
 
 
 
