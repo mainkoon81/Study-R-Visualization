@@ -410,7 +410,7 @@ ggplot(aes(x = age, y = median_friend_count), data = pf.fc_by_age_gender) +
    - It seems like the gender difference is largest for our young users. It would be to put this in relative terms though. So, let's answer a different question. "**How many times more friends**" does the average female user have than the male user? Maybe, females have twice as many friends as male users, or maybe it's ten times as many friends.....
    - We want to plot the **ratio of females to males** to determine how many times more friends the average female user has, compared to the number of friends the average male user has...Plot the ratio of the female to male median friend counts using the dataframe **'pf.fc_by_age_gender2'**.
 
-# Create a new summary dataset !!
+# Create a new dataset for HUMAN !!
 >Notice how the variables we grouped over -male and female-, have been repeated. We need to rearrange our data a little bit. Right now, our data is in 'long format'(pf.fc_by_age_gender). We have many rows. What we need is 'wide format' with values of the 'median_friend_count 'conditional on 'gender'(pf.fc_by_age_gender2).
  - `dcast(data, keep ~ expand, key_value)` for HUMAN: **Reshaping** the dataset: We specify the dataset we are going to change and modify and then we put in a formula. Now, the first part of the formula (the left of the tilde sign), will list the variables I want to keep (age). On the right side of the tilde, we use the gender variable since we want male and female users to have **their own columns** for median friend count in the data frame. And finally, we set "value.var" because it holds the k.e.y m.e.a.s.u.r.e.m.e.n.t.s. or their values in our new dataframe.
  - `melt(data, id.vars = 'Factor_name', measure.vars = c("variable(previous col) ", "variable(..)"))` for MACHINE: Converting the wide-format(expanded for human) back to the original long-format(shrunk for machine). It takes data in wide format and stacks a set of columns into a single column of data. To make use of the function we need to specify a data frame, the id variables (which will be left at their settings) and the measured variables (columns of data) to be stacked. The default assumption on measured variables is that it is all columns that are not specified as id variables. # wide format ==> long format
@@ -606,7 +606,7 @@ ggpairs(pf_sub[sample.int(nrow(pf_sub), 1000), ])
  - The `ggpairs()` uses a different plot type for different types of combinations of variables. Hence, we have histograms here and we have scatter plots here. Many of these plots aren't quite as nice as they would be if we fine-tuned them for the particular variables. For example, for all the counts of likes, we might want to work on a logarithmic scale. But, ggpairs doesn't do this for us.
 
 
-> `melt()` practice
+## `melt()` practice
  - Data: This is a genomic data. In these data sets, they're often thousands of genetic measurements for each of a small number of samples. In some cases, some of these samples have a disease, and so we'd like to identify genes that are associated with the disease. 
 ```
 nci <- read.table("C:/Users/Minkun/Desktop/classes_1/NanoDeg/1.Data_AN/L7/---New R/data/nci.tsv")
