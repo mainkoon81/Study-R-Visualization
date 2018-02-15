@@ -613,6 +613,28 @@ nci <- read.table("C:/Users/Minkun/Desktop/classes_1/NanoDeg/1.Data_AN/L7/---New
 head(nci, 5)
 colnames(nci) <- c(1:64)
 ```
+<img src="https://user-images.githubusercontent.com/31917400/36286436-abc9f83e-12a7-11e8-9f97-a3e57d90f402.jpg" /> 
+
+ - `melt(data, id.vars = 'Factor_name', measure.vars = c("variable(previous col) ", "variable(..)"))` for MACHINE: Converting the wide-format(expanded for human) back to the original long-format(shrunk for machine). It takes data in wide format and stacks a set of columns into a single column of data. To make use of the function we need to specify a dataframe, the id variables (which will be left at their settings) and the measured variables (columns of data) to be stacked. The default assumption on measured variables is that it is all columns that are not specified as id variables. # wide format ==> long format
+```
+library(reshape2)
+
+nci.long.samp <- melt(as.matrix(nci[1:200,]))
+names(nci.long.samp) <- c("gene", "case", "value")
+head(nci.long.samp)
+```
+<img src="https://user-images.githubusercontent.com/31917400/36286538-25e92658-12a8-11e8-840d-01caedb15852.jpg" /> 
+
+ - Heatmap
+   - For our dataset, we want to display each combination of gene and sample case, the difference in gene expression and the sample from the base line. We want to display combinations(a scale gradient) where a gene is overexpressed in red in combinations where a gene is under expressed in blue. 
+```
+ggplot(aes(y = gene, x = case, fill = value), data = nci.long.samp) +
+  geom_tile() +
+  scale_fill_gradientn(colours = colorRampPalette(c("blue", "red"))(100))
+```
+<img src="https://user-images.githubusercontent.com/31917400/36286628-804e2f4e-12a8-11e8-8ade-538dc29d7fa9.jpg" /> 
+
+ we're just showing the first 200 genes. That's 200 genes of over Genomic data sets of these kind, sometimes called micro data are only getting larger, and more complex. What's most interesting, is that other data sets also look like this. For example, internet companies run lots of randomized experiments. Where in the simplest versions, users are randomly assigned to a treatment like a new version of a website or some sort of new feature or product or a control condition. Then the difference in outcome between the treatment and control can be computed for a number of metrics of interest. In many situations, there might have been hundreds or thousands of experiments and hundreds of metrics. This data looks very  similar to the genomic data in some ways. And this is why the useful maxim plot all the data might not always apply to a data set as it did to most of this course. 
 
 
 
