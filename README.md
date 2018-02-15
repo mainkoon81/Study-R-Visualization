@@ -569,7 +569,7 @@ ggplot(aes(x=time, y=price), data = yo) + geom_jitter(alpha=0.2, shape=21, fill=
  - [2) Sampling Observations]
    - Can you see the **scattered time series** data? How to proceed differently with this type of a data set?
    - When familiarizing yourself with a new data set that contains **multiple observations of the same units (over time?)**, it's often useful to work with a **sample** of those units so that it's easy to display the raw data for that sample. 
-   - In the case of the yogurt data set, we might want to look at a small sample of households in more detail so that we know what kind of within and between household variation we are working with. 
+   - In the case of the yogurt dataset, we might want to look at a small sample of households in more detail so that we know what kind of within and between household variation we are working with. 
    - This analysis of a **sub-sample** might come before trying to use within household variation as part of a model. For example, this data set was originally used to model consumer preferences for variety. But, before doing that, we'd want to look at 
      - how often we observe households buying yogurt 
      - how often they buy multiple items
@@ -589,11 +589,24 @@ ggplot(aes(x=time, y=price), data = subset(yo, id %in% sample.ids)) +
 ```
 <img src="https://user-images.githubusercontent.com/31917400/36231168-f0a9b67a-11d4-11e8-9a95-2b10033247b4.jpg" /> 
 
- - From these plots above, we can see the variation and how often each household buys yogurt. It seems that some household purchases more quantities than others with these larger circles indicating. For most of the households, the price of yogurt holds steady, or tends to increase over time. Now, there are, of course, some exceptions. We might think that the household is using coupons to drive the price down. Now, we don't have the coupon data to associate with this buying data, but you could see how that information could be paired to this data to better understand the consumer behavior. 
+ - From these plots above, we can see the variation of household behaviors. It seems that some household purchases more quantities than others with these larger circles indicating. For most of the households, the price of yogurt holds steady, or tends to increase over time. Now, there are, of course, some exceptions. We might think that the household is using coupons to drive the price down. Now, we don't have the coupon data to associate with this buying data, but you could see how that information could be paired to this data to better understand the consumer behavior. 
+ -  The general idea is that if we have observations over time, we can facet by the primary unit, case, or individual in the dataset. For our yogurt data it was the households we were faceting over. This faceted time series plot is something we can't generate with our pseudo Facebook data set since we don't have data on our sample of users over time. The Facebook data isn't great for examining the process of friending over time. The FB dataset is just a **cross section**, it's just one snapshot at a fixed point that tells us the characteristics of individuals. Not the individuals over, say, a year. But if we had a dataset like the yogurt one, we would be able to track friendships initiated over time and compare that with tenure. This would give us better evidence to explain the difference or the drop in friendships initiated over time as tenure increases. 
+ 
+ - [3) Scatterplot Matrix(with FB dataset)]
+   - When analyzing the relationship between two variables we look to incorporate more variables in the analysis to improve it. For example, by seeing whether a particular relationship is consistent across values of those other variables. In choosing a third or fourth variable to plot, we relied on our domain knowledge. But often, we might want visualizations or summaries to help us **identify such auxiliary variables**. In some analyses, we may plan to make use of a large number of variables. Perhaps, we are planning on predicting one variable with 10, 20, or 100 of others. Or maybe we want to summarize a large set of variables into a smaller set of dimensions. Or perhaps, we're looking for interesting relationships among a large set of variables. In such cases, we can help speed up our exploration by producing many plots or comparisons at once. This could be one way to let the dataset as a whole speak in part by drawing our attention to variables we didn't have a preexisting interest in.
+   - As we've seen, scatter plots are great, but not necessarily suited for all types of variables. For example, categorical ones. So there are other types of visualizations that can be created instead of scatter plots. Like box plots or histograms when the variables are categorical. 
+```
+install.packages("GGally")
+library(GGally)
+
+pf_sub <- pf[ , c(2:15)] 
+ggpairs(pf_sub[sample.int(nrow(pf_sub), 1000), ])
+```
+ - `pf_sub <- subset(pf, select = -c(userid, year_joined, year_joined_bucket))` also works.
+ - The `ggpairs()` uses a different plot type for different types of combinations of variables. Hence, we have histograms here and we have scatter plots here. Many of these plots aren't quite as nice as they would be if we fine-tuned them for the particular variables. For example, for all the counts of likes, we might want to work on a logarithmic scale. But, ggpairs doesn't do this for us.
 
 
 
-   
 
 
 
