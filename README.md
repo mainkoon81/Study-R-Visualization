@@ -602,7 +602,7 @@ library(GGally)
 pf_sub <- pf[ , c(2:15)] 
 ggpairs(pf_sub[sample.int(nrow(pf_sub), 1000), ])
 ```
- - `pf_sub <- subset(pf, select = -c(userid, year_joined, year_joined_bucket))` also works.
+ - `pf_sub <- subset(pf, select = -c(userid, year_joined, year_joined_bucket))` select columns we only want. 
  - The `ggpairs()` uses a different plot type for different types of combinations of variables. Hence, we have histograms here and we have scatter plots here. Many of these plots aren't quite as nice as they would be if we fine-tuned them for the particular variables. For example, for all the counts of likes, we might want to work on a logarithmic scale. But, ggpairs doesn't do this for us.
 
 
