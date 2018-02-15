@@ -606,6 +606,13 @@ ggpairs(pf_sub[sample.int(nrow(pf_sub), 1000), ])
  - The `ggpairs()` uses a different plot type for different types of combinations of variables. Hence, we have histograms here and we have scatter plots here. Many of these plots aren't quite as nice as they would be if we fine-tuned them for the particular variables. For example, for all the counts of likes, we might want to work on a logarithmic scale. But, ggpairs doesn't do this for us.
 
 
+> `melt()` practice
+ - Data: This is a genomic data. In these data sets, they're often thousands of genetic measurements for each of a small number of samples. In some cases, some of these samples have a disease, and so we'd like to identify genes that are associated with the disease. 
+```
+nci <- read.table("C:/Users/Minkun/Desktop/classes_1/NanoDeg/1.Data_AN/L7/---New R/data/nci.tsv")
+head(nci, 5)
+colnames(nci) <- c(1:64)
+```
 
 
 
