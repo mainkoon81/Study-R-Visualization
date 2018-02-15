@@ -545,10 +545,10 @@ ggplot(aes(x=price), data=yo) + geom_histogram(binwidth = 10, fill='red')
 
 <img src="https://user-images.githubusercontent.com/31917400/36229317-bec10a60-11ce-11e8-950a-5a8ad02d8f6a.jpg" />
 
- - Now that we know something about the price, let's figure out on a given purchase occasion how many 'yogurts' does a household purchase. To answer this we need to combine the 'counts of the different yogurt flavors' into one variable. For example, for the one particular household, on one purchase occasion, they bought three different types of yogurt. To figure this out for all the households, we need to make use of a new function.
+ - Now that we know something about the price, let's figure out **on a given purchase occasion** how many 'yogurts' does a household purchase. To answer this we need to combine the 'counts of the different yogurt flavors' into one variable. 
    - Create a new variable called **'all.purchases'**, which gives the total counts of yogurt for each observation or household.
-   - One way to do this is using the `transform(data, defining new_variable)` 
-   - The transform function produces a dataframe so if you use it then save the result to 'yo'!
+   - *One way to do this is using the `transform(data, defining new_variable)` 
+   - This produces a dataframe so if you use it then save the result to 'yo'!
    - yo$all.purchase <- sum(yo[, 4:8]) #....doesn't work..
 ```
 yo <- transform(yo, all.purchase = strawberry+blueberry+pina.colada+plain+mixed.berry)
