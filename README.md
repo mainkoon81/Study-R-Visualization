@@ -1,13 +1,13 @@
 # Study-Visualization-Storytelling (R)
 
->How to Explore ? 
+How to Explore ? 
  - Understand the distribution of a variable and to check for anomalies and outliers
  -	Quantify and Visualize individual variables within a dataset such as scatter plots, histograms, bar charts, box plots
  -	Identify the most important variables and relationships within a dataset before building predictive models;
-   - calculate **correlations**, and investigate **conditional means**
-   -	Use Methods for examining relationships among multiple variables: 
-     - reshaping dataframes
-     - using aesthetics like color and shape to uncover more information
+    - calculate **correlations**, and investigate **conditional means**
+    -	Use Methods for examining relationships among multiple variables: 
+        - reshaping dataframes
+        - using aesthetics like color and shape to uncover more information
 
 __[R]__
  - I. Explore One Variable
