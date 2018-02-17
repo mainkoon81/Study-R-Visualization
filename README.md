@@ -63,7 +63,7 @@ ggplot(data = pf, aes(x = dob_day)) + geom_histogram(binwidth = 1) + scale_x_con
    - 'friends_count' on x-axis
    - Outliers? then 'Limiting axis': `+ scale_x_continuous(limits = c(n, n), breaks)`
    - Faceting by 'gender': `+ facet_wrap( ~ gender)` or '+ facet_grid(gender ~ .)' 
-   - then ommiting NA values..it sould be dealt within the 'data' level: `data=subset(pf, !is.na(gender))`
+   - then ommiting NA values...`subset(data, select = -c(column,column))` ?...like this, it sould be dealt within the 'data' level: `data=subset(pf, !is.na(gender))`
    - IF the relationship include ****categorical variable**** (such as 'gender'), then
      - Find STATISTICS ? 
        - by the categorical variable, what we want is 'total count of records' and see the distribution in each group.: `table(categorical_variable, useNA = 'ifany')`
