@@ -645,7 +645,7 @@ ggplot(aes(y = gene, x = case, fill = value), data = nci.long.samp) +
 
  we're just showing the first 200 genes. That's 200 genes of over Genomic data sets of these kind, sometimes called micro data are only getting larger, and more complex. What's most interesting, is that other data sets also look like this. For example, internet companies run lots of randomized experiments. Where in the simplest versions, users are randomly assigned to a treatment like a new version of a website or some sort of new feature or product or a control condition. Then the difference in outcome between the treatment and control can be computed for a number of metrics of interest. In many situations, there might have been hundreds or thousands of experiments and hundreds of metrics. This data looks very  similar to the genomic data in some ways. And this is why the useful maxim plot all the data might not always apply to a data set as it did to most of this course. 
 
-
+<img src="https://user-images.githubusercontent.com/31917400/36426992-c61c8f2c-1643-11e8-94bf-9b1a9e446475.png" />
 
 
 
