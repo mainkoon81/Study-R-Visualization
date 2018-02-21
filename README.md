@@ -391,7 +391,7 @@ We want to add 'mean' on the boxplot ? `+ stat_summary(fun.y, geom, shape)`
 ggplot(aes(x=gender, y=age), data = subset(pf, !is.na(gender))) + 
   geom_boxplot() + stat_summary(fun.y=mean, geom='point', shape=4)
 ```
-Since male users on avg are a bit younger, we might actually think a simple 'male-to-female comparison' doesn't capture their substantial differences in friend_count. Let's look at median_friend_count by age and gender instead. Then we can see that nearly everywhere the median friend count is larger for women than it is for men. `+ geom_line(aes(color), stat, fun.y)`
+Since male users on avg are a bit younger, we might actually think a simple 'male-to-female comparison' doesn't capture their substantial differences in friend_count. Let's look at median_friend_count by age and gender instead. Then we can see that nearly everywhere the median friend count is larger for women than it is for men. `+ geom_line(aes(color), stat, fun.y)` Just for Note: For the aggregation term, `geom_boxplot()` use `+ stat_summary(fun.y=mean, geom='point', shape=4)` **outside** while `geom_line()` use `stat='summary', fun.y=agg.f` **inside**.
 ```
 ggplot(aes(x=age, y=friend_count), data = subset(pf, !is.na(gender))) + 
   geom_line(aes(color=gender), stat='summary', fun.y=median)
