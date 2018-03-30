@@ -649,7 +649,13 @@ ggplot(aes(y = gene, x = case, fill = value), data = nci.long.samp) +
 
 <img src="https://user-images.githubusercontent.com/31917400/36426992-c61c8f2c-1643-11e8-94bf-9b1a9e446475.png" />
 
+ - Multivariate Boxplot
+```
+df$field_A.bucket = cut(df$field_A, c( , , , , ))
 
+ggplot(aes(x = factor(field_B), y = field_C), data = df) + geom_boxplot(aes(fill = field_A.bucket)) + 
+  scale_fill_brewer(type='seq', guide=guide_legend(title='field_A.bucket'))
+```
 
 
 
