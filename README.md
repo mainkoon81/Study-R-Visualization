@@ -6,7 +6,7 @@ How to Explore ?
  -	Identify the most important variables and relationships within a dataset before building predictive models;
     - calculate **correlations**, and investigate **conditional means**
     -	Use Methods for examining relationships among multiple variables: 
-        - reshaping dataframes
+        - reshaping dataframes.
         - using aesthetics like color and shape to uncover more information
 
 __[R]__
